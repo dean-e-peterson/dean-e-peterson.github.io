@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+         "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" width="115" height="215">
+  <defs>
+    <g id="lineloop">
+      <path
+        d="M55,5
+           l0,100
+           a25,25 0 1,1 -25,-25
+           l50,0" />
+    </g>
+
+    <g id="dualloop">
+      <use x="0" y="5" href="#lineloop" />
+      <use x="5" y="0" href="#lineloop" />
+    </g>
+
+    <g id="fillloop">
+    <!-- style="stroke: #000000; stroke-width: 2px; stroke-linecap: round;
+              fill: #000000;"> -->
+      <path
+        d="M60,5
+           l0,100
+           a25,25 0 1,1 -25,-25
+           l50,0
+           l-5,5
+           l-50,0
+           a25,25 0 1,0 25,25
+           l0,-100
+           Z" />
+    </g>
+    
+  </defs>
+  <!-- <use x="0" y="0" href="#lineloop" /> -->
+  <use x="0" y="0" href="#dualloop"
+       style="stroke: black;
+              stroke-width: 2px;
+              stroke-linecap: round;
+              fill: none;" />
+  <use x="0" y="0" href="#fillloop"
+       transform="rotate(180 57.5 107.5)"
+       style="stroke: mediumBlue;
+              stroke-linecap: round;
+              stroke-width: 2px;
+              fill: mediumBlue;" />
+</svg>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Finding a Way - Contact</title>
+  <!--  contact.html - Page with contact form for Dean Peterson
+        Written by:  Dean Peterson (petersod8@csp.edu) L00425670
+                     CSP csc135-100 - Project 4: Accessibility
+        Written:  2017/11/12 dep - Created from news.html
+        Revised:  2017/11/12 dep - Add form
+                  2017/11/13 dep - Add different form controls to try them
+                  2017/11/18 dep - Incorporate input boxes within labels
+                  2017/11/20 dep - Unincorporate input boxes from labels
+                  2019/05/05 dep - Add contact note for portfolio use
+  -->
+  <link rel="stylesheet" href="style.css" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description"
+     content="Contact Dean Peterson" />
+</head>
+<body>
+  <header id="top">
+    <a href="#content" class="skip noprint">Skip to main content</a>
+    <h1>Finding a Way</h1>
+    <p>Explorations in Computer Science</p>
+    <p>by Dean Peterson</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="tip.html">Tips</a></li>
+      <li><a href="disability.html">Disability</a></li>
+      <li><a href="hobby.html">Hobbies</a></li>
+      <li><a href="resume.html">R&eacute;sum&eacute;</a></li>
+      <li><a class="current" href="contact.html">Contact</a></li>
+      <li><a href="clientSpec.html">Specification</a></li>
+    </ul>
+  </nav>
+
+  <div id="content">
+    <section>
+      <h2>Contact Dean</h2>
+      <p>
+        <strong><em>Note: This was a design exercise in
+        a client-side-only web development class.
+        This form is NOT hooked to an actual contact
+        implementation on the server.</em></strong>
+      </p>
+      <p>
+        Please fill in your information to contact Dean.
+        Fields marked with an asterisk (*) are required.
+      </p>
+      <form>
+
+        <h3>Name</h3>
+        <div>
+          <label for="txtFirstName">First Name*</label>
+          <input type="text" name="txtFirstName" id="txtFirstName"
+                 placeholder="First name" value="John"
+                 maxlength="25" required>
+        </div>
+        <div>
+          <label for="txtLastName">Last Name*</label>
+          <input type="text" name="txtLastName" id="txtLastName"
+                 placeholder="Last name" value="Doe"
+                 maxlength="35" required>
+        </div>
+
+        <h3>Contact Information</h3>
+        <div>
+          <label for="telPhone">Phone Number</label>
+          <input type="tel" name="telPhone" id="telPhone"
+                 placeholder="###-###-####" value="612-555-1212">
+        </div>
+        <div>
+          <label for="emailEmail">Email*</label>
+          <input type="email" name="emailEmail" id="emailEmail"
+                 placeholder="johndoe@example.org" value="jdoe@example.org"
+                 required>
+        </div>
+        <div>
+          <label for="urlWebsite">Website</label>
+          <input type="url" name="urlWebsite" id="urlWebsite"
+                 title="Enter a URL, including protocol (http:// or https://)"
+                 placeholder="https://www.example.org/"
+                 value="https://www.example.org/">
+        </div>
+        <fieldset>
+          <legend>Mailing Address</legend>
+          <div>
+            <label for="txtStreet">Street</label>
+            <input type="text" name="txtStreet" id="txtStreet"
+                   placeholder="Enter your street address here"
+                   value="1060 W Addison St">
+          </div>
+          <div>
+            <label for="txtCity">City</label>
+            <input type="text" name="txtCity" id="txtCity"
+                   placeholder="City name"
+                   value="Chicago">
+          </div>
+          <div>
+            <label for="txtState">State</label>
+            <input type="text" name="txtState" id="txtState"
+                   placeholder="XX"
+                   value="IL">
+          </div>
+          <div>
+            <label for="txtZip">Zip</label>
+            <input type="text" name="txtZip" id="txtZip"
+                   placeholder="#####"
+                   value="60613">
+          </div>
+        </fieldset>
+        <h3>General Interest</h3>
+        <div>
+          <fieldset class="noborder">
+            <legend>Gender</legend>
+            <input type="radio" name="optGender" id="optGenderMale"
+                   value="male">
+            <label for="optGenderMale">Male</label>
+            <input type="radio" name="optGender" id="optGenderFemale"
+                   value="female" checked>
+            <label for="optGenderFemale">Female</label>
+          </fieldset>
+        </div>
+        <div>
+          <fieldset class="noborder">
+            <legend>Do You Have Pets?</legend>
+            <span class="nowrap">
+              <input type="checkbox" name="chkCat" id="chkCat" checked>
+              <label for="chkCat">Cat</label>
+            </span>
+            <span class="nowrap">
+              <input type="checkbox" name="chkDog" id="chkDog">
+              <label for="chkDog">Dog</label>
+            </span>
+            <span class="nowrap">
+              <input type="checkbox" name="chkCamel" id="chkCamel" checked>
+              <label for="chkCamel">Camel</label>
+            </span>
+            <span class="nowrap">
+              <input type="checkbox" name="chkParakeet" id="chkParakeet">
+              <label for="chkParakeet">Parakeet</label>
+            </span>
+          </fieldset>
+        </div>
+        <div>
+          <span class="labelish">Cat has extra toes</span>
+          <input type="checkbox" name="chkPolydactyl" id="chkPolydactyl"
+                 checked>
+          <label for="chkPolydactyl">
+            Polydactyl
+          </label>
+        </div>
+        <div>
+          <label for="lstPolitics">Politics: Who's correct?</label>
+          <select name="lstPolitics" id="lstPolitics">
+            <option value="noOpinion">No opinion</option>
+            <option value="oneHalf" selected>One Half of the Country</option>
+            <option value="otherHalf">The Other Half of the Country</option>
+          </select>
+        </div>
+        <div>
+          <label for="dateGrad">Graduation Date</label>
+          <input type="date" name="dateGrad" id="dateGrad"
+                 title="High school graduation date"
+                 value="2000-05-01">
+        </div>
+        <div>
+          <label for="colFavorite">Favorite Color</label>
+          <input type="color" name="colFavorite" id="colFavorite"
+                 value="#BF00BF">
+        </div>
+        <div>
+          <label for="numFavorite">Favorite Number</label>
+          <input type="number" name="numFavorite" id="numFavorite"
+                 value="12">
+        </div>
+        <div>
+          <label for="rangeMeaningless">A pointless slider</label>
+          <input type="range" name="rangeMeaningless" id="rangeMeaningless"
+                 value="30">
+        </div>
+
+        <h3>How can I help you?</h3>
+        <div>
+          <label for="txtMessage" class="top">Message</label>
+          <textarea name="txtMessage" id="txtMessage" rows="4">Test</textarea>
+        </div>
+        <div>
+          <input name="btnSubmit" id="btnSubmit" type="submit" value="Submit">
+        </div>
+      </form>
+    </section>
+  </div> <!-- id="content" -->
+
+  <footer>
+    <p class="noprint">
+      <em><a href="#top">to top</a></em>
+    </p>
+    <p>
+      Dean Peterson <br />
+      petersod8@csp.edu <br />
+      651.895.6732
+    </p>
+  </footer>
+</body>
+</html>
+

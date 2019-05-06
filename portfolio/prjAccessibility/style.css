@@ -1,0 +1,370 @@
+/*  style.css - Site-wide style sheet for Project: Accessibility
+        Written by:  Dean Peterson (petersod8@csp.edu) L00425670
+                     CSP csc135-100 - Project 4: Accessibility
+        Written:  2017/11/16 - dep
+        Revised:  2017/11/18 - dep - Completed initial look and feel
+                  2017/11/18 - dep - Add print and h4 styling
+                  2017/11/19 - dep - Adjust h4 spacing
+                  2017/11/20 - dep - Form styling
+                  2017/11/20 - dep - Fix collapsing nav bar in Edge & IE
+                  2017/11/20 - dep - Distinguish accessibility-only fieldsets
+                  2017/11/20 - dep - Reference remote, not local, google font
+
+    Color Scheme:
+        #87CEEB - skyBlue - Basis of scheme, picked first.
+        #0000CD - mediumBlue - Possible additional blue for logo, etc.
+        #0000EE - default hyperlink blue - It worked so I left as default.
+        #551A8B - default visited hyperlink purple - ditto.
+        #000000 - black - Added for sleek look (and black goes w/ anything).
+        #FFFFFF - white - For text on dark background.
+        #2F4F4F - darkSlateGray - Added as a near-black for gradient use
+        #696969 - dimGray - Added as an intermediate gray for nav borders
+
+    Font note: 
+        This uses Google font "Open Sans", only 300 weight.  See note below.
+
+
+/************************** Font setup *************************************/
+
+/*  This page uses Google font "Open Sans", but only in the light (300)
+ *  weight.  If you want to use other weights, be sure to adjust import.
+ *  https://fonts.google.com/specimen/Open+Sans
+ */
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300');
+
+/* Font Open Sans light weight from Google fonts
+@font-face {
+  font-family:          'Open Sans';
+  font-style:           normal;
+  font-weight:          300;
+  src:                  local('Open Sans Light'), 
+                        local('OpenSans-Light'), 
+                        url("font/openSansLatin300.woff2") format('woff2');
+  unicode-range:        U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+} 
+*/
+
+/************************** Page layout ************************************/
+
+body {
+background-color:       white; /* dodgerBlue; */
+font-family:            Arial, Helvetica, sans-serif;
+font-size:              0.95em;
+line-height:            1.4;
+margin:                 0;
+}
+
+header {
+background-color:       white;
+/*  background-image:       url("graphic/logo.svg");
+ *  background-position:    95%;
+ *  background-repeat:      no-repeat;
+ *  background-size:        4em auto; */
+padding:                0.5em 1em 1em 2em;
+}
+
+#content {
+clear:                  both;
+}
+
+section, aside {
+background-color:       white;
+box-sizing:             border-box;
+float:                  left;
+padding:                1em 2em 0 2em;
+width:                  50%;
+}
+
+.right {
+float:                  right;
+}
+
+.fullwidth {
+width:                  100%;
+}
+
+footer {
+background-color:       white;
+clear:                  both;
+padding:                0.5em 1em 1em 2em;
+}
+
+/************************** Responsive Page Layout *************************/
+@media screen and (max-width: 719px) {
+    section, aside {
+    width: 100%;
+    }
+}
+
+
+/************************** Nav bar buttons ********************************/
+
+nav {
+background:             black;                  /* If don't support gradient */
+background:             linear-gradient(darkSlateGray, black);
+}
+
+/*
+ *  By default, the nav ul's height would collapse to 0 because all of its
+ *  child li's float and therefore do not reserve vertical space...or something.
+ *  The nav ul's overflow: hidden prevents this collapse, I believe because it
+ *  implicitly creates a new block formatting context isolating those floats.
+ *  Using display: flow-root might be a more direct way of accomplishing the
+ *  same thing, but it does not work in Edge or IE.
+ */
+nav ul {
+list-style:             none;
+margin:                 0;
+overflow:               hidden;                 /* Don't collapse height */
+padding:                0;
+}
+
+nav li {
+float:                  left;                   /* line up left to right */
+}
+
+nav a {
+border-color:           dimGray;
+border-style:           solid;
+border-width:           0 1px 0 0;
+color:                  white;
+display:                block;
+font-family:            "Open Sans", Arial, Helvetica, sans-serif;
+font-size:              1.1em;
+font-weight:            300;
+padding:                1em;
+text-decoration:        none;
+}
+
+/*  Blue bar at top and bottom of nav button. */
+nav a.current, nav a:hover {
+padding-bottom:         0.7em;
+padding-top:            0.7em;
+border-bottom:          0.3em solid skyBlue;
+border-top:             0.3em solid skyBlue;
+}
+
+/*  Blue bar just at bottom of nav button. */
+nav a:focus {
+padding-bottom:         0.7em;
+border-bottom:          0.3em solid skyBlue;
+}
+
+/************************** Specific styling *******************************/
+
+h1, h2, h3, h4 {
+font-family:            "Open Sans", Arial, Helvetica, sans-serif;
+font-weight:            300;
+}
+
+h1 {
+font-size:              2.75em;
+margin:                 0.125em 0 0.25em 0;     /* affects header spacing */
+}
+
+h2 {
+background:             black;                  /* If don't support gradient */
+background:             linear-gradient(darkSlateGray, black);
+color:                  white;
+font-size:              1.9em;
+margin:                 0.75em 0 0.7em 0;
+padding:                0 0.3em 0.1em 0.3em;    /* Give background room */
+}
+
+h3 {
+font-size:              1.65em;
+margin:                 1em 0 0.6em 0;
+}
+
+h4 {
+font-size:              1.25em;
+margin-bottom:          0.7em;
+}
+
+h2 + p, h3 + p {
+margin-top:             0.75em;                 /* Keep content with header */
+}
+
+img {
+height:                 auto;                   /* Preserve aspect ratio */
+max-width:              100%;                   /* Shrink if too big */
+}
+
+/*  Keyboard input should stand out from other code and output. */
+kbd {
+font-weight:        bold;
+}
+
+/************************** Table styling **********************************/
+table {
+border-collapse:        collapse;
+}
+
+table caption {
+font-style:             italic;
+margin-bottom:          1em;
+}
+
+th, td {
+border-bottom:          1px dotted silver;      /* border between rows */
+padding:                0.2em 0.75em 0.1em 0.5em;
+}
+
+/*  Since borders are only between rows, align headers like text. */
+th {
+text-align:             left;
+}
+
+/*  But first column of numbered tables should be centered. */
+table.numbered td:nth-child(1) {
+text-align:             center;
+}
+
+/************************** Form styling ***********************************/
+
+/*  Specified widths of all elements in forms include padding and borders.
+ *  This makes it so controls with extra stuff (like select) still line up.
+ */
+form * {
+box-sizing:             border-box;
+}
+
+form div {
+margin:                 0.3em 0;
+}
+
+/*  Default labels live in the left column of the form, with a minimum width
+ *  so that fields to the right of them line up.  Text align right moves the
+ *  actual text of the label up against the fields to their right.
+ *  See also override for some labels below.
+ */
+label, .labelish {
+display:                inline-block;           /* Let it have width */
+text-align:             right;
+padding-right:          0.25em;
+width:                  38%;   /* Leave 2% for space between inline blocks */
+}
+
+/*  Labels not in the left column of form, such as radio button labels
+ *  are exempt from the width set above.
+ */
+input + label {
+width:                  auto;
+}
+
+select,
+textarea,
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="url"],
+/*input[type="range"],*/
+input[type="number"],
+input[type="date"] {
+border:                 1px solid skyBlue;
+font:                   inherit;                /* Keep external font & size */
+padding:                2px 1px 1px 3px;        /* ...red fish, blue fish */
+width:                  60%;
+}
+
+/*  Useful for labels by tall textareas */
+.top {
+vertical-align:         top;
+}
+
+/*  Tweak a checkbox without frameset to align with those in a frameset. */
+.labelish + input[type="checkbox"] {
+margin-left: 0.75em;
+}
+
+/*  Formatting for visible fieldsets (see also .noborder fieldsets below) */
+fieldset {
+border:                 1px solid skyBlue;
+}
+
+/*  We use .noborder fieldsets with legends to help assistive technology
+ *  fully describe the context of radio buttons and checkboxes.  However,
+ *  we do not want all radio buttons and checkboxes wrapped in a border.
+ *  Therefore, we remove their border, move the frameset contents over
+ *  to the right side of the form with the rest of the editable fields,
+ *  and move the legend out to the left and position it like a label.
+ */
+fieldset.noborder {
+border:                 none;
+margin-left:            auto;
+margin-right:           0;
+padding:                0.25em 0;
+position:               relative;               /* allow absolute pos legend */
+width:                  60%;
+}
+
+/*  See .noborder note above. */
+fieldset.noborder legend {
+position:               absolute;
+right:                  105%;
+white-space:            nowrap;
+/*  This worked in Chrome & Edge but not Firefox, use nowrap instead
+ *  left:                   -70%;
+ *  text-align:             right;
+ */
+}
+
+/************************** Specialty styling ******************************/
+
+/*  For skip navigation link. */
+.skip {
+float:                  right;
+font-size:              0.8em;
+}
+
+/*  Strong lead-in that can be added optionally to the start of a section. */
+span.leadIn {
+font-style:             italic;
+font-weight:            bold;
+}
+
+.nowrap {
+white-space:            nowrap;
+}
+
+/************************** Print styling **********************************/
+
+/*  Print section is at bottom so it can override anything with equal
+ *  specificity.  Line-height is adjusted to make a wide single-column
+ *  layout more readable.
+ */
+@media print {
+    /* Increase leading for wider single column printing. */
+    body {
+    line-height:        1.6;
+    }
+
+    /* Single column */
+    section, aside, .right {
+    float:              none;
+    width:              80%;
+    margin:             auto;
+    }
+
+    nav, .noprint {
+    display:            none;
+    }
+
+    h2 {
+    background-color:   white;                  /* Stops validation warning */
+    border-top:         0.125em solid black;
+    color:              black;
+    font-size:          2.1em;
+    padding-left:       0;
+    }
+    
+    /* Print link URLs since you can't click them on paper. */
+    a[href^="http://"]::after,
+    a[href^="https://"]::after,
+    a[href^="mailto:"]::after {
+        content:        " (" attr(href) ") ";
+        word-wrap:      break-word;             /* Wrap long URLs */
+    }
+}
+
