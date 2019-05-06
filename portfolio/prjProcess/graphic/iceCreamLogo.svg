@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1/EN"
+          "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="400">
+  <!--  iceCreamLogo.svg - Ice Cream Shoppe logo
+        Concordia csc235 - Server Side Development - Week 4, Project: Process
+        Created - 2018/06/04 - dep - Dean Peterson (petersod8@csp.edu)
+        Revised - 2018/06/05 - dep - Increase stroke width
+                  2018/06/06 - dep - Brown to saddleBrown for contrast w/ red
+                  2018/06/07 - dep - Hair/eyes from saddleBrown to cherry red
+                  2018/06/07 - dep - Add waffle cone pattern
+  -->
+
+  <defs>
+    <pattern id="waffle" x="0" y="0" width="40" height="40"
+             patternUnits="userSpaceOnUse">
+      <!-- <circle cx="20" cy="20" r="18" /> -->
+      <rect x="0" y="0" width="40" height="40"
+            style="fill: papayaWhip;" />
+      <line x1="0" y1="0" x2="40" y2="40"
+            style="stroke: tan; stroke-width: 2;" />
+      <line x1="0" y1="40" x2="40" y2="0"
+            style="stroke: tan; stroke-width: 2;" />
+    </pattern>
+  </defs>
+
+  <!-- Cone (was papayaWhip, now patterned) -->
+  <g style="stroke-width: 3;">
+    <path style="stroke: black; fill: url('#waffle');"
+          d="M100,380
+             L40,180
+             A100,50 0 0,0 160,180
+             Z" />
+
+    <!-- Ice Cream -->
+    <path style="stroke: black; fill: white;"
+          d="M40,180
+             A100,50 0 0,0 160,180
+             A90,90 0 1,0 40,180
+             " />
+
+    <!-- Topping/Hair (was saddleBrown, now cherry red) -->
+    <path style="stroke: black; fill: #C40000;"
+          d="M30,56
+             Q55,78 85,56
+             T 118,66
+             T 170,56
+             A90,90 0 0,0 30,56
+             Z" />
+
+    <!-- Eyes -->
+    <circle style="stroke: black; fill: #C40000;"
+            cx="70" cy="100" r="10" />
+    <circle style="stroke: black; fill: #C40000;"
+            cx="130" cy="100" r="10" />
+
+    <!-- Smile -->
+    <path style="stroke: black; fill: pink;"
+          d="M60,140
+             A60,40 0 0,0 140,140
+             A60,90 0 0,1 60,140
+            " />
+  </g>
+</svg>
+

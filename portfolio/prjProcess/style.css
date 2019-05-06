@@ -1,0 +1,235 @@
+/*  style.css- Ice Cream Shoppe external stylesheet.
+ *  Concordia csc235 - Server Side Development - Week 4, Project: Process
+ *  Created - 2018/06/04 - dep - Dean Peterson (petersod8@csp.edu)
+ *  Revised - 2018/06/06 - dep - Begin styling site
+ *            2018/06/06 - dep - Basic menu section styling
+ *            2018/06/06 - dep - Basic form styling
+ *            2018/06/08 - dep - Polish form styling
+ */
+
+/**************************** Imports *************************************/
+
+/* Import google web fonts.  Imports must come first it appears.
+ * Instructions with corresponding default fonts:
+ * font-family: 'EB Garamond', serif;
+ * font-family: 'Lobster', cursive;
+ */
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond:400,700|Lobster');
+
+
+/**************************** Page-wide styles ****************************/
+
+/* Font-size set on :root (element <html>) rather than body so that the overall
+ * font-size scaling done here will affect the CSS rem unit throughout the page
+ */
+:root {
+    font-size:              1.2em;
+}
+
+body {
+    font-family:            'EB Garamond', serif;
+    margin:                 0;
+}
+
+#frame {
+    background-color:       aquamarine;
+    margin-left:            auto;
+    margin-right:           auto;
+    max-width:              800px;
+    padding:                0 1rem .5rem 1rem;
+}
+
+header, footer {
+    color:                  #C40000; /* Cherry Red */
+    font-weight:            bold;
+}
+
+header p {
+    margin:                 0 .5rem 1rem .5rem;
+}
+
+footer {
+    clear:                  both;
+    margin:                 1.5rem .5rem .5rem .5rem;
+}
+
+h1 {
+    font-family:            Lobster, cursive;
+    font-size:              4em;
+    font-weight:            normal;
+    margin:                 0;
+}
+
+#logo {
+    float:                  right;
+    height:                 10rem;
+}
+
+/**************************** Navigation bar styles ***********************/
+
+nav {
+    overflow:               hidden;  /* Don't collapse height of floats. */
+}
+
+nav ul {
+    list-style:             none;
+    margin:                 0;
+    padding:                0;
+}
+
+nav li {
+    background-color:       white;
+    float:                  left;  /* Line up nav links left to right. */
+}
+
+nav a {
+    color:                  #C40000;
+    display:                block;  /* Take up vertical space. */
+    font-size:              1.3em;
+    font-weight:            bold;
+    padding:                .2rem 1rem;
+    text-decoration:        none;  /* Don't underline hyperlinks. */
+}
+
+nav a.current, nav a:hover, nav a:active {
+    background-color:       #C40000;
+    color:                  white;
+}
+
+/**************************** Menu Section Styles *************************/
+
+.section-left, .section-right {
+    clear:                  both;
+}
+
+.section-left img {
+    float:                  right;
+    width:                  40%;  /* was 33%; */
+}
+
+.section-right img {
+    float:                  left;
+    width:                  40%;  /* was 33%; */
+}
+
+.section-left h3, .section-right h3 {
+    color:                  #C40000;
+    font-family:            Lobster, cursive;
+    font-size:              3em;
+    font-weight:            normal;
+    margin-top:             1rem;
+    margin-bottom:          .5rem;
+}
+
+.section-left .section-text {
+    margin-left:            0;
+    margin-right:           auto;
+    width:                  57%;  /* was 63%; */
+}
+
+.section-right .section-text {
+    margin-left:            auto;
+    margin-right:           0;
+    width:                  57%;  /* was 63%; */
+}
+
+.item {
+    font-weight:            bold;
+}
+
+.price {
+    float:                  right;
+    font-weight:            bold;
+}
+
+/**************************** Mobile Phone Styles ************************/
+
+/* Make menu layout work for mobile phone widths. */
+@media screen and (max-width: 639px) {
+    h1 {
+        font-size:          3em;
+    }
+
+    .section-left h3, .section-right h3 {
+        font-size:          2em;
+    }
+
+    .section-left img, .section-right img {
+        display:            block;
+        float:              none;
+        margin-left:        auto;
+        margin-right:       auto;
+        max-width:          50%;
+        width:              50%;
+    }
+
+    .section-left .section-text, .section-right .section-text {
+        width:              100%;
+    }
+}
+
+/**************************** Form styles *********************************/
+
+label {
+    display:                inline-block;  /* Let labels have width. */
+    width:                  10rem;
+}
+
+label.top-align {
+    vertical-align:         top;  /* Especially important by textarea. */
+}
+
+input, select {
+    font-size:              1rem;
+    font-family:            'EB Garamond', serif;
+    margin:                 .25rem 1rem .25rem 0;
+    width:                  12rem;
+}
+
+input[type="file"] {
+    font-size:              1rem;  /* was .73rem; */
+}
+
+textarea {
+    font-size:              1rem;
+    font-family:            'EB Garamond', serif;  /* was sans-serif; */
+    margin-top:             .25rem;  /* same as top/bottom input margin */
+    width:                  30rem;
+}
+
+button {
+    font-size:              1rem;
+    font-family:            'EB Garamond', serif;
+    margin:                 .25rem 0;  /* like top/bottom input margin */
+}
+
+/**************************** Miscellaneous styles ************************/
+
+/* Classes q and a stand for question and answer. */
+.q {
+    font-weight:            bold;
+    margin-bottom:          0;
+}
+
+.a {
+    margin-top:             0;
+}
+
+table {
+    border-collapse:        collapse;
+}
+
+td, th {
+    border:                 1px solid #C40000;
+    padding:                .2em .5em .2em .5em;
+}
+
+th {
+    text-align:             left;
+}
+
+.confirmation {
+    background-color:       white;
+    padding:                 0 .5rem;
+}
+
