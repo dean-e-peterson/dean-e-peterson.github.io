@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Dean Peterson's Project CSS Client Specifications</title>
+  <!--  clientSpec.html - Site design description for Project: CSS
+        Written by:  Dean Peterson (petersod8@csp.edu) L00425670
+                     CSP csc135-100 - Project 4: Accessibility
+        Written:  2017/10/27
+        Revised:  2017/10/31 dep - Add nav bar link to main page
+                  2017/11/02 dep - Add wireframe and color palatte
+                  2017/11/04 dep - Add background image and other edits
+                  2017/11/06 dep - Add sitemap
+                  2017/11/09 dep - Override style sheet's table border-collapse
+                  2017/11/10 dep - Use fullwidth class to avoid columns
+                  2017/11/12 dep - Add disability and contact pages
+                  2017/11/13 dep - Add drop down menu to site map, page table
+                  2017/11/14 dep - Change palette table to accessible list
+                  2017/11/20 dep - Document new sleek corporate look
+                  2019/05/05 dep - Update a bit for portfolio use
+  -->
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description"
+     content="Client specification for Dean Peterson's Modern Web Design
+              class individual assignment." />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- clientSpec.html specific style overrides -->
+  <style>
+
+    /* clientSpec.html should not have a background image.
+     * We will show it as part of the page contents.
+     */
+    body {
+        background-image:   none;
+    }
+
+    /* clientSpec.html may inherit a site background color from the external
+     * style sheet for a consistent look.  Therefore, we give images and the
+     * color palette a white border to make their true colors stand out.
+     */
+    img {
+        background-color:   white;
+        padding:            1em;
+    }
+
+    ul.palette {
+        background-color:   white;
+        list-style:         none;
+        padding:            0;
+    }
+
+    /* Make color palette list items line up left to right,
+     * and big enough to easily see the background color. 
+     */
+    ul.palette li {
+        display:            inline-block;
+        font-weight:        bold;
+        height:             4em;
+        margin:             1em;
+        padding:            1em;
+        text-align:         center;
+        width:              6em;
+    }
+  </style>
+</head>
+<body>
+  <header id="top">
+    <a href="#content" class="skip noprint">Skip to main content</a>
+    <h1>Client Specifications</h1>
+    <p>Concordia csc135 - Modern Web Design - Week 4 - Project Accessibility</p>
+    <p>by Dean Peterson (petersod8@csp.edu) L00425670</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="tip.html">Tips</a></li>
+      <li><a href="disability.html">Disability</a></li>
+      <li><a href="hobby.html">Hobbies</a></li>
+      <li><a href="resume.html">R&eacute;sum&eacute;</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a class="current" href="clientSpec.html">Specification</a></li>
+    </ul>
+  </nav>
+  
+  <div id="content">
+    <section class="fullwidth">
+      <h2>Site Overview</h2>
+      <p>
+        The site should highlight the client's resume, while also allowing
+        him to add content that showcases his IT knowledge.  The site should
+        be optimistic.
+      </p>
+      <p>
+        The site will be hosted at
+        <a href="https://dean-e-peterson.github.io/portfolio/prjAccessibility/index.html">
+          <strong>https://dean-e-peterson.github.io/portfolio/prjAccessibility/index.html</strong>
+        </a>
+      </p>
+      <h3>New Look</h3>
+      <p>
+        The client changed his mind and wanted a more sleek, corporate look.
+        The original antique look is still documented at the end in case
+        he wants to return to the original look.
+      </p>
+    </section>
+
+    <section class="fullwidth">
+      <h2>Diagrams</h2>
+      <h3>Site Map</h3>
+      <p>
+        <em>Note: The following sitemap is aspirational.</em>
+        It shows how drop-down menus will be implemented
+        in the future.
+      </p>
+      <img src="graphic/sitemap.svg" width="600"
+           alt="A heirarchical diagram of the sitemap showing
+                a home page at the top level which appears in the nav bar,
+                some first level children which also appear in the nav bar,
+                and second level children which show in drop down menus.
+                Details are described in table below." />
+      <table>
+        <caption>Pages in Website</caption>
+        <tr>
+          <th scope="col">Page Name</th>
+          <th scope="col">Filename</th>
+          <th scope="col">In Nav Bar?</th>
+          <th scope="col">Parent Page</th>
+        </tr>
+        <tr>
+          <th scope="row">Home</th>
+          <td>index.html</td>
+          <td>Yes</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th scope="row">Tips</th>
+          <td>tip.html</td>
+          <td>Yes</td>
+          <td>Home</td>
+        </tr>
+        <tr>
+          <th scope="row">Disability</th>
+          <td>disability.html</td>
+          <td>Yes</td>
+          <td>Home</td>
+        </tr>
+        <tr>
+          <th scope="row">Hobbies</th>
+          <td>hobby.html</td>
+          <td>Yes</td>
+          <td>Home</td>
+        </tr>
+        <tr>
+          <th scope="row">R&eacute;sum&eacute;</th>
+          <td>resume.html</td>
+          <td>Yes</td>
+          <td>Home</td>
+        </tr>
+        <tr>
+          <th scope="row">Contact</th>
+          <td>contact.html</td>
+          <td>Yes</td>
+          <td>Home</td>
+        </tr>
+        <tr>
+          <th scope="row">Specification</th>
+          <td>clientSpec.html</td>
+          <td>Not in nav bar for production<br />
+              Yes in nav bar during development</td>
+          <td>Home</td>
+        </tr>
+        <tr>
+          <th scope="row">Resources</th>
+          <td>resource.html</td>
+          <td>No</td>
+          <td>Tips</td>
+        </tr>
+        <tr>
+          <th scope="row">Humor</th>
+          <td>humor.html</td>
+          <td>No</td>
+          <td>Hobbies</td>
+        </tr>
+        <tr>
+          <th scope="row">Work</th>
+          <td>work.html</td>
+          <td>No</td>
+          <td>R&eacute;sum&eacute;</td>
+        </tr>
+      </table>
+
+      <h3>Wireframe</h3>
+      <img src="graphic/wireframe.png" width="500" height="600"
+           alt="Web site wireframe diagram showing a two column layout
+                with a nav bar.  The header and footer are offset to
+                the right to allow room for logos in the top and bottom left.
+                The logo in the top left fades into the header." />
+    </section>
+
+    <section class="fullwidth">
+      <h2>New Font</h2>
+      <p>
+        Heading font now defaults to the
+        <a href="https://fonts.google.com/specimen/Open+Sans">
+          Google web font "Open Sans".
+        </a>
+      </p>
+    </section>
+
+    <section class="fullwidth">
+      <h2>New Logo</h2>
+      <p>
+        The new logo, which may or not be used, was created by Dean Peterson.
+      </p>
+      <img src="graphic/logo.svg"
+           alt="Logo showing stylized letters d and p intertwined.
+                Colors are black and medium blue." />
+    </section>
+
+    <section class="fullwidth">
+      <h2>New Color Palette</h2>
+      <p>
+        The palette was created by starting with CSS named color skyBlue,
+        and working from there.  Specifically, the reasoning behind the
+        colors are:
+      </p>
+      <ul>
+          <li>#87CEEB - skyBlue - Basis of scheme, picked first.</li>
+          <li>#0000CD - mediumBlue - Possible additional blue for logo, etc.</li>
+          <li>#0000EE - default hyperlink blue - Works, left as default.</li>
+          <li>#551A8B - default visited hyperlink purple - ditto.</li>
+          <li>#000000 - black - For sleek look (black goes w/ anything).</li>
+          <li>#FFFFFF - white - For text on dark background.</li>
+          <li>#2F4F4F - darkSlateGray - Near-black for gradient use</li>
+          <li>#696969 - dimGray - An intermediate gray for nav borders</li>
+      </ul>
+      <p>
+        Here are the same colors displayed visually:
+      </p>
+      <ul class="palette">
+        <li style="background-color: #87CEEB;">#87CEEB<br>skyBlue</li>
+        <li style="background-color: #0000CD; color: #FFFFFF;">#0000CD<br>mediumBlue</li>
+        <li style="background-color: #0000EE; color: #FFFFFF;">#0000EE<br>blue</li>
+        <li style="background-color: #551A8B; color: #FFFFFF;">#551A8B<br>purple</li>
+        <li style="background-color: #000000; color: #FFFFFF;">#000000<br>black</li>
+        <li style="background-color: #FFFFFF;">#FFFFFF<br>white</li>
+        <li style="background-color: #2F4F4F; color: #FFFFFF;">#2F4F4F<br>darkSlateGray</li>
+        <li style="background-color: #696969; color: #FFFFFF;">#696969<br>dimGray</li>
+      </ul>
+    </section>
+
+    <section class="fullwidth">
+      <h2>Original Antique Image/Logo</h2>
+      <p>
+        The original look background image is an excerpt of from the
+        <em><a href="https://www.loc.gov/item/2005634035">
+          Portolan atlas of the Mediterranean Sea, western Europe,
+          and the northwest coast of Africa</a></em>, ca. 1590.
+      </p>
+      <img src="graphic/portolanAtlas.jpg"
+           alt="Excerpt of a 1500's atlas showing a fancy compass rose
+                and lines radiating from it, fading down and to the right.
+                The colors are dark brown and red inks on an off-white background.
+                The background is a bit weathered, but the lines are precise." />
+      <p>
+        The compass rose in the upper left corner of the background image
+        doubles as a logo.
+      </p>
+    </section>
+
+    <section class="fullwidth">
+      <h2>Original Antique Color Palette</h2>
+      <p>
+        The palette was created from the original of the background image using
+        <a href="https://color.adobe.com/">Adobe Color CC</a>.
+        The lightest color (#E8DFCE) was added manually by
+        pulling it from the same background image with an eyedropper.
+        The darkest color (#000000) was added manually for legible body text.
+      </p>
+      <ul class="palette">
+        <li style="background-color: #E8DFCE;">#E8DFCE<br />beige?</li>
+        <li style="background-color: #D9CDBF;">#D9CDBF<br />dark beige?</li>
+        <li style="background-color: #A8A18E;">#A8A18E<br />tan?</li>
+        <li style="background-color: #8A1512; color: #A8A18E;">#8A1512<br />rusty red?</li>
+        <li style="background-color: #583718; color: #A8A18E;">#583718<br />brown?</li>
+        <li style="background-color: #240802; color: #A8A18E;">#240802<br />off black?</li>
+        <li style="background-color: #000000; color: #A8A18E;">#000000<br />black</li>
+      </ul>
+      <p>
+        Note: The color names are approximate, and were created by someone who is
+        partially color blind.  Use hex codes instead, which were generated from
+        the background source image.
+      </p>
+    </section>
+  </div> <!-- id="content" -->
+
+  <footer>
+    <p class="noprint">
+      <em><a href="#top">to top</a></em>
+    </p>
+    <p>
+      Dean Peterson <br />
+      petersod8@csp.edu <br />
+      651.895.6732
+    </p>
+  </footer>
+</body>
+</html>

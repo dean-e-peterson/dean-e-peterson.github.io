@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Finding a Way - Explorations in Computer Science</title>
+  <!--  index.html - Information Technology Tips and Tricks
+        Written by:  Dean Peterson (petersod8@csp.edu) L00425670
+                     CSP csc135-100 - Project 4: Accessibility
+        Written:  2017/11/06 dep - Created from index.html
+        Revised:  2017/11/09 dep - Add Table of Contents
+                  2017/11/09 dep - Reorder content sections for better columns
+                  2017/11/09 dep - RENAMED FROM TIPS.HTML TO INDEX.HTML
+                  2017/11/10 dep - Float How Web Works right to help layout
+                  2017/11/14 dep - Move contents of news.html to index.html
+                  2017/11/18 dep - Re-title and re-order content
+                  2017/11/18 dep - Add disability and contact pages to news
+  -->
+  <link rel="stylesheet" href="style.css" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description"
+     content="Information Technology Tips, Tricks, and Work Samples by
+              Dean Peterson" />
+</head>
+<body>
+  <header id="top">
+    <a href="#content" class="skip noprint">Skip to main content</a>
+    <h1>Finding a Way</h1>
+    <p>Explorations in Computer Science</p>
+    <p>by Dean Peterson</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a class="current" href="index.html">Home</a></li>
+      <li><a href="tip.html">Tips</a></li>
+      <li><a href="disability.html">Disability</a></li>
+      <li><a href="hobby.html">Hobbies</a></li>
+      <li><a href="resume.html">R&eacute;sum&eacute;</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="clientSpec.html">Specification</a></li>
+    </ul>
+  </nav>
+
+  <div id="content">
+    <section id="toc">
+      <h2>Table of Contents</h2>
+      <ul>
+        <li><a href="#news">News</a></li>
+        <li><a href="#howWebWorks">How the Web Works</a></li>
+        <li><a href="#cssMusings">CSS Specificaton Musings</a></li>
+        <li><a href="#decentral">The Decentralized Nature of the Web</a></li>
+        <li><a href="#steps">Steps in a Web Request</a></li>
+      </ul>
+    </section>
+
+    <section class="right">
+      <h2 id="news">News</h2>
+
+      <h3>Disabilities and Contact Pages Added</h3>
+      <p>
+        See <a href="disability.html">Disability</a> for some accessibility
+        information, or contact Dean from
+        the <a href="contact.html">Contact</a> page.
+      </p>
+
+      <h3>New Look</h3>
+      <p>
+        Check out our sleek new corporate look.
+        Changes from our old look are documented on our
+        <a href="clientSpec.html">client specification page</a>.
+      </p>
+
+      <h3>Other Internal Links</h3>
+      <p>
+        Here are previews of other content we are developing:
+      </p>
+      <ul>
+        <li><a href="humor.html">Humor</a></li>
+        <li><a href="resource.html">Resources</a></li>
+        <li><a href="work.html">Work</a></li>
+      </ul>
+
+      <h3>Back to School</h3>
+      <p>
+        I am back in school pursuing a Bachelor of Computer Science degree
+        at Concordia University Saint Paul.
+      </p>
+
+      <h3>News Flash: Dean's humor still bad</h3>
+      <p>
+        In other news, my sense of humor is as bad as ever.  To see funny
+        stuff, mostly by other people who are actually funny, see the
+        <a href="humor.html">humor</a> link.
+      </p>
+    </section>
+
+    <section>
+      <h2 id="howWebWorks">How the Web Works</h2>
+      <p>
+        The World Wide Web is a decentralized system for storing, referencing,
+        and retrieving information.  The term Internet is often used
+        colloquially as a synonym for the World Wide Web, but at a technical
+        level they are separate.  The internet is the global network of
+        computers which provides the connections that the web uses to
+        retrieve information.
+      </p>
+      <h3>Storing Information</h3>
+      <p>
+        The data accessible via the World Wide Web is stored on web servers
+        all over the world.  These are computers whose purpose is to store
+        web pages and other files, and to pass them over the network upon
+        request.  Anyone can run their own web server, although they may
+        have to pay an internet service provider or telecommunications
+        company to provide the connection to the rest of the internet.
+        Most individuals and small companies rent space on a web hosting
+        company's web servers for a fee.
+      </p>
+      <h3>Referencing Information</h3>
+      <p>
+        The web's native form of content is the web page, a text document with
+        special markup (HTML) indicating document structure and containing
+        hyperlinks, which are links to any other document on the Web.
+        The simplicity and ubiquity of hyperlinks has profound implications,
+        allowing any document  to reference any other (public) document
+        in the world, creating the "web" of references that gives the
+        World Wide Web its name.
+      </p>
+      <p>
+        Web pages are displayed by computer programs called web browsers.
+        These are the windows to the web which run on computers, smartphones,
+        etc. that people look at to view the web.  Browsers format the
+        web pages for viewing, and allow the user to select the hyperlinks
+        to navigate between documents on the web.
+      </p>
+      <h3>Retrieving Information</h3>
+      <p>
+        When a user enters a web address or clicks on a hyperlink,
+        behind the scenes, the web browser uses the global DNS database
+        to convert the web server's domain name into a numeric IP address.
+        Then, the browser talks to the web server over the internet to
+        request the desired document.  The request is formatted in a specific
+        way, per the HTTP protocol.  Upon receiving the request, the web server
+        sends the requested web page back over the internet to the browser that
+        requested it.
+      </p>
+    </section>
+
+    <section>
+      <h2 id="cssMusings">CSS Specification Musings</h2>
+      <p>
+        I wonder if <abbr title="Cascading Style Sheets">CSS</abbr>
+        specification clarity and organization is a casualty of the tension
+        between the <a href="https://www.w3.org/">W3C</a> and browser
+        implementers.
+      </p>
+      <p>
+        The latest <a href="https://www.w3.org/TR/CSS2/">CSS 2</a> revision
+        has a red note saying that &ldquo;several sections ... have been
+        updated by other specifications&rdquo;, and points you to a
+        <a href="https://www.w3.org/TR/CSS/#css">portion of a document</a>
+        that has indexes into those specifications.
+        In other words, there is no single official CSS 3 specification
+        document, as I understand it.  I'm sure I don't know the challenges
+        they face trying to standardize a moving target, but it does seem a
+        bit unfortunate.
+      </p>
+    </section>
+
+    <aside>
+      <h2 id="decentral">The Decentralized Nature of the Web</h2>
+      <p>
+        <span class="leadIn">The decentralized nature of the World Wide Web is
+        a key strength</span> on both technological and social levels.
+        Technologically, it makes it harder to destroy any significant
+        proportion of the internet.  Socially, the World Wide Web represents
+        the greatest leap in the publication and availability of information
+        since the printing press.
+      </p>
+      <p>
+        The web's decentralized nature does have some drawbacks, as criminals
+        or other bad actors can more easily sell illicit goods from hiding.
+        Also, there is no common provision of backup and continued access to
+        information in the event of a catastrophe.
+      </p>
+      <p>
+        The decentralization of the web is somewhat limited by the prevalence
+        of large telecommunications companies providing the backbone network
+        links that carry much of the traffic, and by the influence of search
+        engines, especially Google, as the way most people find content on
+        the web in the first place.
+      </p>
+    </aside>
+
+    <section class="fullwidth">
+      <h2 id="steps">Steps in a Web Request</h2>
+      <table class="numbered"> <!--numbered to center first column -->
+        <tr>
+          <th>Step Number</th>
+          <th>Description</th>
+          <!--
+          <th>Behind the scenes</th>
+          -->
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>User clicks link in web page displayed in web browser.</td>
+          <!--
+          <td>Link has the domain name of the destination's web server.</td>
+          -->
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Web browser queries <abbr title="Domain Name System">DNS</abbr>
+            to convert destination domain name to an IP address.
+          </td>
+          <!--
+          <td>DNS is a distributed hierarchical database, so no one server
+            knows the IP address of every domain name.  See
+            <a href="https://en.wikipedia.org/wiki/Domain_Name_System">
+              Domain Name System
+            </a>
+            on Wikipedia for more information.
+          </td>
+          -->
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Web browser requests the destination web page from the web
+            server at the IP address returned by DNS.
+          </td>
+          <!--
+          <td>
+            Web requests are carried by the internet, and are formatted
+            according to a protocol called HTTP.
+          </td>
+          -->
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Web server responds, sending back the destination web page.</td>
+          <!--
+          <td>The destination web page could be a static file sitting on the
+            destination web server, or it could be dynamically created
+            on the fly by the web server from data in a database
+            (for example, a bank statement)
+          </td>
+          -->
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Web browser receives the destination web page and displays it.</td>
+          <!--
+          <td>Web browser formats the web page according to the rules of
+            <abbr title="HyperText Markup Language">HTML</abbr>
+          </td>
+          -->
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>User reads the new web page, until they click on a link
+            and the steps repeat from step 1.
+          </td>
+          <!--
+          <td>
+            What goes on behind the scenes in the reader's brain is
+            familiar enough that we know the experience of it,
+            but complex enough that we have only scratched the
+            surface of understanding the human mind.
+          </td>
+          -->
+        </tr>
+      </table>
+    </section>
+
+  </div>
+
+  <footer>
+    <p class="noprint">
+      <em><a href="#top">to top</a></em>
+    </p>
+    <p>
+      Dean Peterson <br />
+      petersod8@csp.edu <br />
+      651.895.6732
+    </p>
+  </footer>
+</body>
+</html>
+

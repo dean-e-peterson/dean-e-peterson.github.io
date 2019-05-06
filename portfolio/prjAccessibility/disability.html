@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Finding a Way - Accessibility</title>
+  <!--  disability.html - Disability and Accessibility information
+        Written by:  Dean Peterson (petersod8@csp.edu) L00425670
+                     CSP csc135-100 - Project 4: Accessibility
+        Written:  2017/11/12 dep - Created from index.html
+        Revised:  2017/11/16 dep - Add skip to content accessibility link
+                  2017/11/18 dep - Edit text
+                  2017/11/20 dep - Add intro text to TOC
+  -->
+  <link rel="stylesheet" href="style.css" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description"
+     content="Accessibility information by
+              Dean Peterson" />
+</head>
+<body>
+  <header id="top">
+    <a href="#content" class="skip noprint">Skip to main content</a>
+    <h1>Finding a Way</h1>
+    <p>Explorations in Computer Science</p>
+    <p>by Dean Peterson</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="tip.html">Tips</a></li>
+      <li><a class="current" href="disability.html">Disability</a></li>
+      <li><a href="hobby.html">Hobbies</a></li>
+      <li><a href="resume.html">R&eacute;sum&eacute;</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="clientSpec.html">Specification</a></li>
+    </ul>
+  </nav>
+
+  <div id="content">
+    <section id="toc">
+      <h2>Disability and Accessibility Contents</h2>
+      <p>
+        When people think about web accessibility, they often focus on
+        people who have difficulty seeing or hearing the content.
+        While these are completely valid concerns, people with
+        other conditions can also face challenges using web content:
+      </p>
+      <ul>
+        <li>
+          <a href="#autism">Autism and Accessibility</a>
+        </li>
+        <li>
+          <a href="#tremors">Hand Tremors and Accessibility</a>
+        </li>
+        <li>
+          <a href="#pour">
+            <abbr title="Perceivable, Operable, Understandable, and Robust">
+              P.O.U.R.
+            </abbr>
+            Accessibility Mnemonic
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <section id="autism" class="right">
+      <h2>Autism and Accessibility</h2>
+      <h3>Autism Description</h3>
+      <p>
+        Autism is a spectrum of related conditions which cause problems
+        with social skills, repetitive behaviors, issues with speech and
+        communication, etc. (from 
+        <a href="https://www.autismspeaks.org/what-autism">What is Autism</a>,
+        by Autism Speaks).
+      </p>
+      <h3>Autism Web Accessibility Tips</h3>
+      <p>
+        Web developers can help users with autism by doing the following:
+      </p>
+      <ul>
+        <li>Have a clear, uncluttered site.</li>
+        <li>
+          Avoid things that distract people.  Specifically...
+          <ul>
+            <li>Avoid animation and movement, or have a way to stop them</li>
+            <li>Avoid background music and sounds</li>
+            <li>Do not use a lot of bright primary colors</li>
+          </ul>
+        </li>
+        <li>Make your site navigation act consistently</li>
+        <li>Use clear, plain, <em>literal</em> language</li>
+        <li>Avoid metaphors, figures of speech, and any language
+            that is figurative or can have more than one meaning</li>
+        <li>Use bullet lists instead of a wall of text</li>
+        <li>Provide visual alternatives to text information</li>
+      </ul>
+      <p>
+        The suggestions above may help all users, but they are especially
+        important for users with autism.
+      </p>
+      <h3>Autism Accommodations</h3>
+      <p>
+        I did not see very many products to help people with autism use the web.
+        One user found Site-Specific Browsers (SSBs) useful
+        (<a href="http://www.iheni.com/an-interview-with-jamie-knight-autism-and-accessible-web-design/">Jamie Knight interview</a>).
+        These make a specific web page act like an application, without
+        the full web browser user interface, which can simplify the experience.
+        An example is a Mac application called
+        <a href="http://fluidapp.com/">Fluid</a>.
+        Apps from the Apple, Google, and Windows app stores that target a
+        specific web platform (like Facebook) may have similar benefits,
+        at least when compared with accessing those same platforms
+        using a normal web browser.
+      </p>
+      <h3>Autism Accessibility Resources</h3>
+      <p>
+        A simple Google search gives useful results,
+        but here are some references I found helpful:
+      </p>
+      <ul>
+        <li>
+          <a href="http://www.autism.org.uk/professionals/others/website-design.aspx">
+            Designing autism-friendly websites
+          </a>, from the National Autistic Society.
+        </li>
+        <li>
+          <a href="http://www.iheni.com/an-interview-with-jamie-knight-autism-and-accessible-web-design/">
+            An interview with Jamie Knight: autism and accessible web design
+          </a>, from Henny Swan's blog.
+        <li>
+          <a href="https://accessibility.blog.gov.uk/2016/09/02/dos-and-donts-on-designing-for-accessibility/">
+            Accessibility Posters
+          </a>from the U.K. government's accessibility blog.
+        </li>
+      </ul>
+    </section>
+
+    <section id="tremors">
+      <h2>Hand Tremors and Accessibility</h2>
+      <h3>Tremor Description</h3>
+      <p>
+        Hand tremors are an unintentional, continual shaking of the hands.
+        They can grow worse as we age.  They are sometimes the result of
+        Parkinson's disease or a stroke.
+        Tremors can make it difficult to use a mouse, a touch screen,
+        or even a keyboard.
+      </p>
+      <h3>Tremor Web Accessibility Tips</h3>
+      <p>
+        Web developers can help users with tremors by doing the following:
+      </p>
+      <ul>
+        <li>Make clickable areas like links large.</li>
+        <li>Avoid tiny font sizes.</li>
+        <li>
+          Make sure your site reacts well to being zoomed in.
+          (Some users with tremors and or eye problems may zoom their
+          web browser in to help handle those issues.  However,
+          if your site does not zoom well, the user might have to
+          scroll horizontally, negating some of the benefit.)
+        </li>
+      </ul>
+      <h3>Tremor Accommodations</h3>
+      <p>
+        People with hand tremors may want to consider the following
+        accommodations.
+      </p>
+      <ul>
+        <li>
+          Operating System accessibility settings such as:
+          <ul>
+            <li>Filter Keys</li>
+            <li>Sticky Keys</li>
+            <li>Mouse speed settings</li>
+          </ul>
+        </li>
+        <li>
+          Products such as:
+          <ul>
+            <li>Voice recognition software</li>
+            <li>Specialty Computer Mice</li>
+            <li>
+              Keyguards - They go over the keyboard.  The user rests their
+              hands on the keyguard, which has holes in it that the user
+              can type through with fewer accidental keystrokes due to tremors.
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h3>Tremor Accessibility Resources</h3>
+      <p>Here are some interesting resources about tremors...</p>
+      <ul>
+        <li>
+          <a href="https://www.abilitynet.org.uk/blog/using-computer-if-you-have-tremors">Using a computer if you have tremors</a>, from the AbilityNet blog.
+        </li>
+        <li>
+          <a href="http://ndipat.org/blog/computer-access-and-parkinsons-3-great-products-and-a-freebie/">Computer Access and Parkinson’s: 3 Great Products and a Freebie!</a>, by Jeannie Krull, from North Dakota Assistive Technology
+        </li>
+        <li>
+          <a href="https://www.w3.org/WAI/intro/people-use-web/stories#retiree"><abbr title="World Wide Web Consortium">WC3</abbr> Stories of Web Users: Mr. Yunus</a> (not a real person, but a realistic scenario of someone with hand tremors, some issues, and some accomodations).
+        </li>
+      </ul>
+    </section>
+
+    <aside id="pour">
+      <h2>
+        <dfn title="Perceivable Operable Understandable and Robust">
+          P.O.U.R.
+        </dfn>
+        Accessibility Mnemonic
+      </h2>
+      <p>
+        <span class="leadIn">P.O.U.R. is an accessibility mnemonic standing
+        for Perceivable, Operable, Understandable, and Robust.</span>
+        It is also the organizing principal of the
+        <abbr title="World Wide Web Consortium">W3C's</abbr>
+        <a href="https://www.w3.org/TR/WCAG20/">
+          WCAG 2.0 Web Content Accessibility Guidelines
+        </a>.
+      </p>
+      <h3>Perceivable</h3>
+      <p>
+        All web users should be able to perceive all of the content
+        on the website.  The content should be available to multiple
+        senses so that those with visual or hearing impairments can
+        still perceive it.
+      </p>
+      <p>
+        This site tries to be perceivable by providing alternate text
+        for images, by including "skip navigation" and "to top" links,
+        and by providing page structure with semantic markup and
+        descriptive heading elements.
+      </p>
+      <h3>Operable</h3>
+      <p>
+        All web users should be able to operate the user interface
+        of the website.  This includes, but is not limited to,
+        navigation links, search functionality, and forms.
+        Anything the user interacts with should be usable
+        by all users, even those who have difficulty seeing
+        or using a mouse.
+      </p>
+      <p>
+        This site tries to be operable by using hyperlinks that
+        describe the target without outside context and by labeling
+        all form fields.  Navigation menu links are rather large,
+        and are also accessible in logical order via the keyboard.
+      </p>
+      <h3>Understandable</h3>
+      <p>
+        Making a web site understandable to all users involves a few
+        things:
+      </p>
+      <ul>
+        <li>
+          Use simple language if possible.
+        </li>
+        <li>
+          Don't surprise the user, especially with unexpected
+          behaviors in places other than where the user is focusing.
+          Keep the context around what the user is doing consistent,
+          beginning with consistent navigation and behavior.
+          As another example, users of screen readers may not see a change
+          you make elsewhere on the page, so only change the state
+          of the whole page when you tell the user that is what you
+          are going to do, like with a submit button.
+        </li>
+        <li>
+          Use semantic markup to help assistive technologies
+          help the user.  For example, specifying the language
+          that a page is written in, or specifying the language
+          of a quotation in a different language, will help a
+          screen reader to pronounce the content appropriately,
+          instead of confusingly.  Other markup such as the
+          abbreviation tag can help, too.
+      </ul>
+      <p>
+        This site tries to be understandable by specifying the
+        language with the &lt;html&gt; tag lang attribute, by
+        including full versions of appropriate abbreviations
+        with the &lt;abbr&gt; tag, by not changing the context
+        or layout of the site or page except for an user-initiated
+        form submission, and by the use of bullet lists where a
+        list of items may be simpler to understand than prose.
+      </p>
+      <h3>Robust</h3>
+      <p>
+        The website should be well-designed using web standards
+        and best practices.  The website should use valid HTML.
+        This helps make the website accessible from both
+        today's technology (some of which you may not have available
+        to test) and tomorrow's technology as well.
+      </p>
+      <p>
+        This site tries to be robust by using standard, validated
+        <abbr title="HyperText Markup Language">HTML</abbr> and
+        <abbr title="Cascading Style Sheets">CSS</abbr>, by
+        attempting to follow best practices in the use of semantic
+        markup and accessibility tools like alternative text,
+        and by at least rudimentary testing on multiple browsers.
+      </p>
+      <h3>Conclusion</h3>
+      <p>
+        These are my interpretations of P.O.U.R.
+        For more authoritative or specific information, see the
+        <a href="https://www.w3.org/TR/WCAG20/">
+        WCAG 2.0 Web Content Accessibility Guidelines</a>.
+      </p>
+    </aside>
+  </div> <!-- id="content" -->
+
+  <footer>
+    <p class="noprint">
+      <em><a href="#top">to top</a></em>
+    </p>
+    <p>
+      Dean Peterson <br />
+      petersod8@csp.edu <br />
+      651.895.6732
+    </p>
+  </footer>
+</body>
+</html>
+
