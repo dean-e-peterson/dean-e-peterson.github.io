@@ -1,0 +1,97 @@
+
+/* --- General styles --- */
+
+* {
+    box-sizing:             border-box;
+}
+
+/* Colorscheme generation helped along by https://coolors.co/ */
+html {
+    /* Note: CSS custom variables not implemented in IE 11 */
+    --accent:               #c05746; /* Cedar Chest */
+    --bg:                   #f4f9e9; /* Isabelline */
+    --bg-darker:            #eef5db; /* Beige */
+    --fg:                   #2b4162; /* Deep Koamaru */
+    --fg-lighter:           #385f71; /* Deep Space Sparkle */
+    --fg-lightest:          #75b9be; /* Moonstone Blue */
+    --text:                 black;
+
+    background-color:       var(--fg-lighter);
+    font-size:              90%; /* Specified here to set rem unit size */
+}
+
+body {
+    background-color:       var(--bg);
+    color:                  var(--text);
+    font-family:            sans-serif;
+    margin:                 0 auto;
+    max-width:              800px;
+}
+
+/* --- Header, Footer, and navigation styles --- */
+
+header, nav, footer {
+    background-color:       var(--fg);
+    color:                  var(--bg);
+    padding-left:           2rem;
+    padding-right:          2rem;
+}
+
+header, footer {
+    padding-bottom:         1rem;
+    padding-top:            1rem;
+}
+
+header h1, header p, footer p {
+    margin-bottom:          0;
+    margin-top:             0;
+}
+
+nav ul {
+    display:                flex;
+    flex-direction:         row;
+    list-style:             none;
+    margin:                 0;
+    padding:                0;
+}
+
+nav li ul {
+    display:                none;
+}
+
+nav li:hover ul {
+    background-color:       var(--fg);
+    color:                  var(--bg);
+    display:                flex;
+    flex-direction:         column;
+    position:               absolute;
+}
+
+nav a {
+    color:                  var(--bg);
+    display:                inline-block;
+    padding:                .5rem .75rem;
+    text-decoration:        none;
+    width:                  100%;
+}
+
+nav a:hover, nav a.current {
+    background-color:       var(--accent);
+    color:                  var(--bg);
+}
+
+/* --- Main content styles --- */
+
+main {
+    line-height:            1.3;
+    padding:                1rem 2rem;
+}
+
+main a:link, main a:visited {
+    color:                  var(--accent);
+}
+
+h2 {
+    margin-top:             0;
+}
+
