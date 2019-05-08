@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+           "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+
+  <!-- With help from great SVG tutorial at
+       http://tutorials.jenkov.com/svg/index.html -->
+
+  <g style="fill: #f4f9e9;">
+    <rect x="0" y="0" width="100" height="20" />
+    <rect x="0" y="40" width="100" height="20" />
+    <rect x="0" y="80" width="100" height="20" />
+  </g>
+
+</svg>
+

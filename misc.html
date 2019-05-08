@@ -2,17 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">  <!-- TODO: Change later -->
   <meta name="description" content="TODO: Update with website desc">
   <title>Dean Peterson's Website - Miscellany</title>
   <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
 </head>
 <body>
   <header>
+    <a class="logo" href="#main">
+      <img src="images/logoCream.svg" alt="skip navigation">
+    </a>
+    <a class="menu" href="javascript:void(0);" onclick="toggleMenu();">
+      <img src="images/menuCream.svg" alt="drop down menu">
+    </a>
     <h1>Dean Peterson's Website</h1>
   </header>
 
-  <nav>
+  <!-- nav class hide-menu gets toggled by menu icon with JavaScript. -->
+  <nav class="hide-menu">
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="resume/resume.html" target="_blank">Resume</a></li>
