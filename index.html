@@ -2,17 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">  <!-- TODO: Change later -->
   <meta name="description" content="TODO: Update with website desc">
   <title>Dean Peterson's Website</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
 </head>
 <body>
   <header>
+    <a class="logo" href="#main">
+      <img src="images/logoCream.svg" alt="skip navigation">
+    </a>
+    <a class="menu" href="javascript:void(0);" onclick="toggleMenu();">
+      <img src="images/menuCream.svg" alt="drop down menu">
+    </a>
     <h1>Dean Peterson's Website</h1>
   </header>
 
-  <nav>
+  <!-- nav class hide-menu gets toggled by menu icon with JavaScript. -->
+  <nav class="hide-menu">
     <ul>
       <li><a class="current" href="index.html">Home</a></li>
       <li><a href="resume/resume.html" target="_blank">Resume</a></li>
@@ -23,12 +33,12 @@
           <li><a href="portfolio/prjAccessibility/index.html" target="_blank">Modern</a></li>
         </ul>
       </li>
-      <li><a href="#">Articles</a></li>
+      <li><a href="articles.html">Articles</a></li>
       <li><a href="misc.html">Miscellany</a></li>
     </ul>
   </nav>
 
-  <main>
+  <main id="main">
 
     <section>
       <h2>About Dean</h2>
@@ -43,9 +53,15 @@
         Saint Paul.
       </p>
       <p>
-        Check out my <a href="resume/resume.html" target="_blank">resume</a>,
-        or feel free to contact me at
-        <a href="mailto:dean.e.penguin@gmail.com">dean.e.penguin@gmail.com</a>
+        Check out my
+        <a href="resume/resume.html" target="_blank">resume online</a>
+        or in
+        <a href="resume/Dean-Peterson-Resume.pdf" target="_blank">PDF format</a>.
+        Or, feel free to contact me at
+        <a href="mailto:dean.e.penguin@gmail.com">dean.e.penguin@gmail.com</a>.
+      </p>
+      <p>
+        Thank you.
       </p>
     </section>
 

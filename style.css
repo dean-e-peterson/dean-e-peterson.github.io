@@ -1,13 +1,9 @@
 
-/* --- General styles --- */
+/* --- Custom properties aka variables --- */
 
-* {
-    box-sizing:             border-box;
-}
-
-/* Colorscheme generation helped along by https://coolors.co/ */
-html {
+:root {
     /* Note: CSS custom variables not implemented in IE 11 */
+    /* Colorscheme generation helped along by https://coolors.co/ */
     --accent:               #c05746; /* Cedar Chest */
     --bg:                   #f4f9e9; /* Isabelline */
     --bg-darker:            #eef5db; /* Beige */
@@ -15,9 +11,17 @@ html {
     --fg-lighter:           #385f71; /* Deep Space Sparkle */
     --fg-lightest:          #75b9be; /* Moonstone Blue */
     --text:                 black;
+}
 
+/* --- General styles --- */
+
+* {
+    box-sizing:             border-box;
+}
+
+html {
     background-color:       var(--fg-lighter);
-    font-size:              90%; /* Specified here to set rem unit size */
+    font-size:              100%; /* Specified here to set rem unit size */
 }
 
 body {
@@ -28,7 +32,24 @@ body {
     max-width:              800px;
 }
 
+img {
+    max-width:              100%;           /* Don't overflow container */
+    height:                 auto;           /* Preserve aspect ratio */
+}
+
 /* --- Header, Footer, and navigation styles --- */
+
+.logo {
+    float:                  right;
+}
+
+.logo img {
+    height:                 4.5rem;
+}
+
+.menu {
+    display:                none;
+}
 
 header, nav, footer {
     background-color:       var(--fg);
@@ -45,6 +66,10 @@ header, footer {
 header h1, header p, footer p {
     margin-bottom:          0;
     margin-top:             0;
+}
+
+h1 {
+    font-size:              2rem;
 }
 
 nav ul {
@@ -80,10 +105,60 @@ nav a:hover, nav a.current {
     color:                  var(--bg);
 }
 
+/* Class hide-menu is toggled by JavaScript from menu icon. */
+.hide-menu {
+    display:                block;
+}
+
+/* --- Responsive header styles for mobile --- */
+@media screen and (max-width: 640px) {
+
+    /* Class hide-menu is toggled by JavaScript from menu icon. */
+    .hide-menu {
+        display:            none;
+    }
+
+    .logo {
+        float:              none;
+    }
+
+    .logo img {
+        height:             1.5rem;
+    }
+
+    .menu {
+        display:            initial;
+        float:              right;
+    }
+
+    .menu img {
+        height:             1.5rem;
+        padding:            .25rem; /* with box-sizing border, makes smaller. */
+    }
+
+    header {
+        padding:            .5rem .5rem .25rem .5rem;
+    }
+
+    header h1 {
+        display:            none;
+    }
+
+    nav ul {
+        flex-direction:     column;
+    }
+
+    nav li ul, nav li:hover ul {
+        display:                block;
+        padding-left:           2rem;
+        position:               static;
+    }
+}
+
 /* --- Main content styles --- */
 
 main {
-    line-height:            1.3;
+    line-height:            1.3;        /* Should match ol.airplane li > *   */
     padding:                1rem 2rem;
 }
 
@@ -91,7 +166,41 @@ main a:link, main a:visited {
     color:                  var(--accent);
 }
 
-h2 {
+/* --- Specialized styles --- */
+
+/*  The next 3 selectors create an ordered list where an initial image
+ *  sits ABOVE the horizontal level of the counter (of the 1., 2., etc.)
+ *  and text below the image sits level with the counter.
+ */
+
+/*  Align the counter of the list with the BOTTOM of the image.  */
+ol.airplane li img {
+    vertical-align:         bottom;
+}
+
+/*  Remove any paragraph top margin which, when below an image, could
+ *  move things down further.
+ */
+ol.airplane li p {
     margin-top:             0;
 }
+
+/*  Move all immediate children of the list items up by the
+ *  default line height.  In particular this moves an initial image
+ *  above the level of the counter (the 1., 2., etc), and moves the
+ *  paragraph below the image up even with the counter, which is our goal.
+ *  We raise the children of the list item because if we raise the list item
+ *  itself, it would also raise the counter, negating what we are trying to do.
+ *
+ */
+ol.airplane li > * {
+    position:               relative;
+    top:                    -1.3rem;    /* Should match main's line-height */
+}
+
+/*  Pad the ordered list on the top to give room for other stuff to move up. */
+ol.airplane {
+    padding-top:            1.3rem;     /* Should match main's line-height */
+}
+
 
