@@ -32,6 +32,11 @@ body {
     max-width:              800px;
 }
 
+img {
+    max-width:              100%;           /* Don't overflow container */
+    height:                 auto;           /* Preserve aspect ratio */
+}
+
 /* --- Header, Footer, and navigation styles --- */
 
 header, nav, footer {
@@ -106,12 +111,8 @@ h2 {
  *  and text below the image sits level with the counter.
  */
 
-/*  Align the counter of the list with the BOTTOM of the image.
- *  Also, prevent the image from overflowing the container.
- */
+/*  Align the counter of the list with the BOTTOM of the image.  */
 ol.airplane li img {
-    max-width:              100%;           /* Don't overflow container */
-    height:                 auto;           /* Preserve aspect ratio */
     vertical-align:         bottom;
 }
 
