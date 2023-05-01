@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow"> <!-- TODO: Update when article finished. -->
+  <meta name="description" content="TODO: Update with website desc">
+  <title>Dean Peterson's Website - C# Async Programming</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="../style.css">
+  <script src="../script.js"></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="#main">
+      <img src="../images/logoCream.svg" alt="skip navigation">
+    </a>
+    <a class="menu" href="javascript:void(0);" onclick="toggleMenu();">
+      <img src="../images/menuCream.svg" alt="drop down menu">
+    </a>
+    <h1>Dean Peterson's Website</h1>
+  </header>
+
+  <!-- nav class hide-menu gets toggled by menu icon with JavaScript. -->
+  <nav class="hide-menu">
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../resume/resume.html" target="_blank">Resume</a></li>
+      <li>
+        <a href="../portfolio.html">Portfolio</a>
+        <ul>
+          <li><a href="../portfolio/prjProcess/index.html" target="_blank">Ice Cream Shoppe</a></li>
+          <li><a href="../portfolio/prjAccessibility/index.html" target="_blank">Modern</a></li>
+        </ul>
+      </li>
+      <li>
+        <a class="current" href="../articles.html">Articles</a>
+        <ul>
+          <li><a class="current" href="../articles/async.html">C# Acync</a></li>
+          <li><a href="../articles/odbc.html">ODBC</a></li>
+          <li><a href="../articles/powershell.html">PowerShell</a></li>
+          <li><a href="../articles/eventlog.html">Windows Event Log</a></li>
+        </ul>
+      </li>
+      <li><a href="../misc.html">Miscellany</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <article>
+      <h2>Calling Asynchronous Code from Synchronous Code in C#</h2>
+      <p>
+        First a major caveat.  If possible, avoid doing this at all.
+        Just make things asynchronous all the way up your call chain.
+        However, if you do need to call asynchronous code from
+        synchronous code in C#, buckle up and read on.
+      </p>
+      <h3>The Difficulty</h3>
+      <p>
+        As I understand it, if an <code>async</code> C# method cannot complete
+        immediately, it turns over control until it finishes.  When it
+        finishes, it tries to continue in something called a synchronization
+        context.  This may be a thread pool, a message loop, or possibly
+        something else, depending on whether the app is a console app, a
+        Windows app, or a web app.  If you called the <code>async</code>
+        method with <code>await</code>, the rest of the calling method
+        continues at that point.
+      </p>
+      <p>
+        However, you cannot use <code>await</code> except in a method that is
+        itself declared as <code>async</code>, forcing it to be turtles, uh,
+        async, all the way down, no, up.  You can get around this by calling
+        the <code>async</code> method from a non-<code>async</code> method,
+        then calling something like <code>Task.Result</code> on the returned
+        <code>Task</code> object.  <em>(TODO: Here or elsewhere add Wait and
+        the other ways to do this.)</em>
+        However, this can block the calling thread.  Remember, that for the
+        <code>async</code> method to finish and return, it has to come back
+        to the synchronization context that called it.  If you are blocking
+        it, you get a deadlock, where the code can hang forever with
+        <code>Task.Result</code> blocking waiting for the <code>async</code>
+        method to return, and the <code>async</code> method waiting for the
+        synchronization context that <code>Task.Result</code> is blocking to
+        become available so that it <strong>can</strong> return.
+      </p>
+      <p>
+        You may be able to get around the deadlock by
+        <em>TODO: Add the method call that gets around this</em>.
+        However, that gets around it by allowing the <code>async</code>
+        method to return to a separate synchronization context, one that
+        is not blocked.  Undesireable effects of this may include:
+      </p>
+      <ul>
+        <li>
+          <p>
+            Occupying another thread in a thread pool increasing the
+            resource use of a web app trying to conserve on threads.
+          </p>  
+        </li>
+        <li>
+          <p>
+            Running on another thread that no longer has access to
+            the user interface if it is a Windows app.
+            <em>TODO: Test this, and see if it affects the following
+            code in the calling method.</em>
+          </p>
+        </li>
+      </ul>
+      <p>
+        <em>TODO: Figure out what to do and add that as well as
+        example code.</em>
+      </p>
+    </article>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Dean Peterson</p>
+  </footer>
+
+</body>
+</html>
