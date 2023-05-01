@@ -51,7 +51,10 @@
     <article>
       <h2>Calling Asynchronous Code from Synchronous Code in C#</h2>
       <p>
-        First a major caveat.  If possible, avoid doing this at all.
+        First a major caveat.  If possible, avoid doing this at all.  See
+        <a href="https://github.com/davidfowl/AspNetCoreDiagnosticScenarios/blob/master/AsyncGuidance.md"
+        target="_blank">David Fowler's Asynchronous .NET Advice</a>
+        for advice on both what to avoid and why.
         Just make things asynchronous all the way up your call chain.
         However, if you do need to call asynchronous code from
         synchronous code in C#, buckle up and read on.
