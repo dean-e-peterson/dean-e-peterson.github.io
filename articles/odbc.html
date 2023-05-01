@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="TODO: Update with website desc">
+  <title>Dean Peterson's Website - ODBC</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="../style.css">
+  <script src="../script.js"></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="#main">
+      <img src="../images/logoCream.svg" alt="skip navigation">
+    </a>
+    <a class="menu" href="javascript:void(0);" onclick="toggleMenu();">
+      <img src="../images/menuCream.svg" alt="drop down menu">
+    </a>
+    <h1>Dean Peterson's Website</h1>
+  </header>
+
+  <!-- nav class hide-menu gets toggled by menu icon with JavaScript. -->
+  <nav class="hide-menu">
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../resume/resume.html" target="_blank">Resume</a></li>
+      <li>
+        <a href="../portfolio.html">Portfolio</a>
+        <ul>
+          <li><a href="../portfolio/prjProcess/index.html" target="_blank">Ice Cream Shoppe</a></li>
+          <li><a href="../portfolio/prjAccessibility/index.html" target="_blank">Modern</a></li>
+        </ul>
+      </li>
+      <li>
+        <a class="current" href="../articles.html">Articles</a>
+        <ul>
+          <li><a href="../articles/powershell.html">PowerShell</a></li>
+          <li><a href="../articles/eventlog.html">Windows Event Log</a></li>
+          <li><a class="current" href="../articles/odbc.html">ODBC</a></li>
+        </ul>
+      </li>
+      <li><a href="../misc.html">Miscellany</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <article>
+      <h2>Insanity, or<br>
+          What I Learned from Configuring ODBC on Windows 7 64-bit</h2>
+      <p>
+        Prose may not be the best way to explain the technical aspects
+        of configuring ODBC drivers on 64-bit Windows 7.  However, it
+        probably <em>is</em> the best way to emphasize the pathos.
+      </p>
+      <h3>32-bit Windows</h3>
+      <p>
+        Most of Windows consists of Dynamic Link Libraries, or DLLs.  These
+        are files containing executable computer code that do not run by
+        themselves, but instead load into memory space of one or more
+        executable programs, or EXEs.  When Microsoft Windows went from
+        16-bit to 32-bit, they decided to put the 32-bit DLLs and executables
+        in the appropriately-named C:\Windows\System32\ directory.
+        The 32-bit ODBC control panel was one such executable,
+        and it was appropriately named odbcad32.exe.
+        There  was also a system called Windows On Windows, or WOW, which let
+        old 16-bit applications run on 32-bit Windows.  (I am not sure what
+        directory WOW's supporting files lived in, but it doesn't matter
+        to this discussion.)
+      </p>
+      <h3>64-bit Windows</h3>
+      <p>
+        Fast forward a decade or two, and Windows goes from 32-bit to 64-bit.
+        Evidently enough people hard-coded the directory name
+        C:\Windows\System32\ into their programs and scripts that Microsoft
+        decided they could not change the name.  Therefore, instead of
+        C:\Windows\System64\, the Windows 64-bit DLLs and executables
+        go in C:\Windows\System32\.
+        The 64-bit ODBC control panel is one such executable.  However,
+        again people were too used to the name odbcad32.exe,
+        so the 64-bit ODBC control panel became
+        C:\Windows\System32\odbcad32.exe.
+        Just like WOW let 16-bit applications run on 32-bit Windows,
+        Microsoft created Windows on Windows 64, or WOW64, to let
+        32-bit applications run on 64-bit Windows.
+        And here we have our first incongruity.  In 64-bit Windows,
+        while 64-bit Windows DLLs and executables go in C:\Windows\System32\,
+        the 32-bit Windows DLLs and executables go in C:\Windows\SysWOW64\.
+        To make the transition seamless for 32-bit applications,
+        when a 32-bit application asks 64-bit Windows for something from
+        C:\Windows\System32\, WOW64 behind the scenes redirects that to
+        C:\Windows\SysWOW64\ behind the scenes, so that 32-bit programs
+        get the 32-bit DLLs they need.
+      </p>
+      <h3>ODBC Control Panel</h3>
+      <p>
+        Because ODBC drivers are just DLLs that load into the memory
+        space of the executable that loads them, a 64-bit application
+        needs to use a 64-bit ODBC driver, but a 32-bit application still
+        needs to use a 32-bit ODBC driver.  Windows 64-bit still has
+        a 32-bit ODBC Control Panel to manage those, which is
+        C:\Windows\SysWOW64\odbcad32.exe.
+        Notice that it is the number of bits the application runs as
+        that determines which ODBC drivers and ODBC Control Panel you
+        use to manage them.  If you have a 32-bit version of Microsoft
+        Excel running on a 64-bit version of Windows, and you want
+        to access a database, you need a 32-bit ODBC driver that
+        matches the application, not a 64-bit ODBC driver that matches
+        the operating system.
+      </p>
+      <p>
+        After installing your 32-bit ODBC driver, however, you cannot
+        run Window 64-bit's default 64-bit ODBC Control Panel.  If you do,
+        it won't see your 32-bit ODBC driver.  You open a web browser
+        and search online, and find out that you have to open the
+        32-bit ODBC Control Panel, at C:\Windows\SysWOW64\odbcad32.exe.
+        However, there is a final injury added to the insult.  On Windows 7,
+        if you leave the 64-bit ODBC Control Panel up in the background
+        behind your web browser, and you try to run the
+        32-bit ODBC Control Panel, then instead of running
+        the 32-bit ODBC Control Panel, Windows just brings the already-running
+        copy of the 64-bit ODBC Control Panel to the top, still without
+        your 32-bit ODBC driver showing...Oh, and the window title bars?
+        They are exactly the same, with nothing to indicate that you
+        got the wrong ODBC Control Panel (aside from what drivers, etc.
+        are listed.)
+      </p>
+      <h3>Conclusion</h3>
+      <p>
+        So, if you have a 32-bit application running 64-bit Windows 7,
+        and you need to access something via ODBC, the steps you
+        need to take are:
+      </p>
+      <ol>
+        <li>Install the 32-bit ODBC driver</li>
+        <li>Look through your open windows, and close any running copy of
+            the ODBC Control Panel</li>
+        <li>Run the 32-bit ODBC Control Panel from
+            C:\Windows\SysWOW64\odbcad32.exe</li>
+      </ol>
+      <p>You should then see your 32-bit ODBC driver in the Drivers tab.</p>
+    </article>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Dean Peterson</p>
+  </footer>
+
+</body>
+</html>

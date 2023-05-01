@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="TODO: Update with website desc">
+  <title>Dean Peterson's Website - Windows Event Log</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="../style.css">
+  <script src="../script.js"></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="#main">
+      <img src="../images/logoCream.svg" alt="skip navigation">
+    </a>
+    <a class="menu" href="javascript:void(0);" onclick="toggleMenu();">
+      <img src="../images/menuCream.svg" alt="drop down menu">
+    </a>
+    <h1>Dean Peterson's Website</h1>
+  </header>
+
+  <!-- nav class hide-menu gets toggled by menu icon with JavaScript. -->
+  <nav class="hide-menu">
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../resume/resume.html" target="_blank">Resume</a></li>
+      <li>
+        <a href="../portfolio.html">Portfolio</a>
+        <ul>
+          <li><a href="../portfolio/prjProcess/index.html" target="_blank">Ice Cream Shoppe</a></li>
+          <li><a href="../portfolio/prjAccessibility/index.html" target="_blank">Modern</a></li>
+        </ul>
+      </li>
+      <li>
+        <a class="current" href="../articles.html">Articles</a>
+        <ul>
+          <li><a href="../articles/powershell.html">PowerShell</a></li>
+          <li><a class="current" href="../articles/eventlog.html">Windows Event Log</a></li>
+          <li><a href="../articles/odbc.html">ODBC</a></li>
+        </ul>
+      </li>
+      <li><a href="../misc.html">Miscellany</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <article>
+      <h2>Windows Event Log Tips</h2>
+
+      <h3>Event Viewer GUI</h3>
+      <p>
+        Microsoft updated the Event Viewer GUI starting with Vista/2008.
+        I like the <code>Ctrl+F</code> Find, although the filtering
+        functionality could still use some work.
+      </p>
+
+      <h4>Find An Event with Ctrl+F</h4>
+      <p>
+        To find an event in the Event Viewer GUI, use
+        <code>Ctrl+F</code> or the Find button.  (I'm embarrassed to
+        admit that it took me a long time to realize the Find button and
+        <code>Ctrl+F</code> were there.)  I believe this is only
+        available in Vista/2008 and up.
+      </p>
+      <img src="images/eventLogFindButton.png" width="776" height="311"
+           alt="Screenshot of Windows 2008(R2?) Server Manager showing
+                the Event Log Find button.  Specifically, the left pane
+                of Server Manager is open to tree node Server Manager,
+                Diagnostics, Event Viewer, Windows Logs, System.
+                Events are listed in the middle pane.  Actions
+                are shown in the right pane, and in category System,
+                the Find button is circled.">
+      <p>
+        Note: This even finds text strings that only exist in the
+        combination of the format string and message parameters.
+      </p>
+      <p>
+        Note: The GUI Event Viewer filter's "User" field will not find
+        Logon events by username.
+      </p>
+
+      <h4>Turning off Filtering - Cautionary Note</h4>
+      <p>
+        If you do Filtering in the Event Viewer GUI, and then turn the
+        Filtering back off, just be a little careful.  
+      </p>
+      <img src="images/eventLogClearFilter.png" width="776" height="293"
+           alt="Screenshot of Windows 2008(R2?) Server Manager showing
+                the System Event Log, with the Clear Log and Clear Filter 
+                actions circled in the right pane, showing how close
+                they are to each other.">
+      <p>
+        Notice how close together those two options on the right side
+        are.  "Clear Filter" to see the entire log again, versus "Clear
+        Log..." to lose the entire log forever...slight difference
+        there.  (I live in fear of someday choosing the wrong one...I
+        may be a sad, sad person.)
+      </p>
+
+      <h3>Powershell Event Log Cmdlets</h3>
+      <p>
+        Powershell has two cmdlets for retrieving Windows event logs,
+        <code>Get-EventLog</code> and <code>Get-WinEvent</code>.  The
+        latter is new with Windows Vista/2008.
+      </p>
+
+      <h4>Get-EventLog</h4>
+      <p>Pros:</p>
+      <ul>
+        <li>
+          It is the only cmdlet available on Windows XP/2003?  (And on
+          newer versions of Windows, it is the only cmdlet that can read
+          ''remote'' event logs from Windows XP/2003 computers?)
+        </li>
+        <li>
+          It provides a convenient <code>-Message</code> parameter for
+          easily searching message contents.  It is the only cmdlet that
+          efficiently lets you combine this message text search with a
+          parameter (<code>-Newest</code>) which can efficiently limit the
+          results to the most recent few events?
+        </li>
+      </ul>
+      <p>Cons:</p>
+      <ul>
+        <li>
+          It cannot return events from all Windows Vista/2008 and newer
+          event logs.  It can only return events from the "Classic"
+          event logs (which I believe are the event logs like
+          Application, Security, Setup, and System, not the new ones
+          under Applications and Services Logs.)
+        </li>
+      </ul>
+
+      <h4>Get-WinEvent</h4>
+      <p>
+        The pros and cons of <code>Get-WinEvent</code> are the converse
+        of those for <code>Get-EventLog</code>.
+      </p>
+
+      <h4>Filtering Event Logs By Message Description in Powershell</h4>
+      <p>
+        Powershell's two Windows event log cmdlets differ in their
+        filtering behavior, but both have useful options.  Make use of
+        <code>Get-WinEvent's -MaxEvents</code> parameter and
+        <code>Get-EventLog's -Newest</code> parameter when testing
+        filters.  They always seem to filter quickly, and reduce output
+        when testing.
+      </p>
+      <p>
+        Tip: The following <strong>might</strong> find recent logons for
+        a user named Lethargo, although you might need UAC elevation to
+        access the Security event log:
+      </p>
+
+      <code><kbd>Get-WinEvent -FilterHashTable
+                 @{ LogName="Security"; ID=4624; Data="Lethargo" }
+                 -MaxEvents 10</kbd></code>
+
+      <h3>Miscellaneous Event Log Tips</h3>
+      <ul>
+        <li>
+          When reading through Logon event messages, don't stop at the
+          "Subject" user...keep reading further down the message.
+        </li>
+        <li>
+          With <code>Get-WinEvent -FilterHashTable</code>, you can use
+          <code>Data="service name"</code>, but I haven't found a way to
+          search on a whole message description (formatted or
+          unformatted?).
+        </li>
+        <li>
+          The wevtutil command can also list event log messages.<br>
+          <code><kbd> wevtutil gp "Service Control Manager" /ge /gm</kbd></code>
+        </li>
+      </ul>
+
+      <h4>Windows Event Log XPATH Filtering Tip</h4>
+      <p>
+        This query seemed to give only Svc Ctrl Mgr info events (&amp;
+        verbose?), including starting, stopping, and changing from
+        demand to auto start (7040)...
+      </p>
+      <pre><code>
+&lt;QueryList&gt;
+  &lt;Query Id="0" Path="System"&gt;
+    &lt;Select Path="System"&gt;
+        *[System[Provider[@Name='Service Control Manager']
+                 and (Level=4 or Level=0 or Level=5)
+                ]
+          and
+          EventData[Data[@Name='param1']='Windows Time']
+         ]
+    &lt;/Select&gt;
+  &lt;/Query&gt;
+&lt;/QueryList&gt;
+      </code></pre>
+
+      <p>
+        This query should be its inverse, and it appears to be in
+        initial testing.  Compared to the previous query, note the
+        additional Select * line, and the replacement of Select from the
+        previous query with Suppress.  It seems to give System event
+        log, minus informational (&amp; verbose?) Service Control
+        Manager messages about the Windows Time service.
+      </p>
+      <pre><code>
+&lt;QueryList&gt;
+  &lt;Query Id="0" Path="System"&gt;
+    <strong>&lt;Select Path="System"&gt;*&lt;/Select&gt;</strong>
+    &lt;<strong>Suppress</strong> Path="System"&gt;
+        *[System[Provider[@Name='Service Control Manager']
+                 and (Level=4 or Level=0 or Level=5) ]
+          and
+          EventData[Data[@Name='param1']='Windows Time']
+         ]
+    &lt;/Suppress&gt;
+  &lt;/Query&gt;
+&lt;/QueryList&gt;
+      </code></pre>
+    </article>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Dean Peterson</p>
+  </footer>
+
+</body>
+</html>

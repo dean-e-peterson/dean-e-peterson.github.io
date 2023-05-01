@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="TODO: Update with website desc">
+  <title>Dean Peterson's Website - PowerShell</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="../style.css">
+  <script src="../script.js"></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="#main">
+      <img src="../images/logoCream.svg" alt="skip navigation">
+    </a>
+    <a class="menu" href="javascript:void(0);" onclick="toggleMenu();">
+      <img src="../images/menuCream.svg" alt="drop down menu">
+    </a>
+    <h1>Dean Peterson's Website</h1>
+  </header>
+
+  <!-- nav class hide-menu gets toggled by menu icon with JavaScript. -->
+  <nav class="hide-menu">
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../resume/resume.html" target="_blank">Resume</a></li>
+      <li>
+        <a href="../portfolio.html">Portfolio</a>
+        <ul>
+          <li><a href="../portfolio/prjProcess/index.html" target="_blank">Ice Cream Shoppe</a></li>
+          <li><a href="../portfolio/prjAccessibility/index.html" target="_blank">Modern</a></li>
+        </ul>
+      </li>
+      <li>
+        <a class="current" href="../articles.html">Articles</a>
+        <ul>
+          <li><a class="current" href="../articles/powershell.html">PowerShell</a></li>
+          <li><a href="../articles/eventlog.html">Windows Event Log</a></li>
+          <li><a href="../articles/odbc.html">ODBC</a></li>
+        </ul>
+      </li>
+      <li><a href="../misc.html">Miscellany</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <article>
+      <h2>PowerShell Tip</h2>
+
+      <h3>Enabling Scripting - Execution Policies</h3>
+      <p>Help on execution policies (note the plural):</p>
+      <code><kbd>help about_execution_policies</kbd></code>
+
+      <p>Show execution policy that is in effect:</p>
+      <code><kbd>Get-ExecutionPolicy</kbd></code>
+
+      <p>
+        Show execution policy at different scopes.  If it is Undefined
+        in all scopes, Powershell defaults to <code>Restricted</code>
+      </p>
+      <code><kbd>Get-ExecutionPolicy -List</kbd></code>
+
+      <p>
+        Enable script execution except for unsigned, remote scripts by
+        changing the machine-wide execution policy.  (Remote supposedly
+        means from web, email, and sometimes UNC):
+      </p>
+      <code><kbd>Set-ExecutionPolicy RemoteSigned</kbd></code>
+
+      <p>
+        Change machine-wide execution policy back to the default.  (You
+        can also set execution policy to <code>Restricted</code>
+        explicitly, but restoring it to <code>Undefined</code> is more
+        like a new machine.  On a new machine, all scopes start out
+        <code>Undefined</code>, which makes the effective execution
+        policy <code>Restricted</code> by default anyway.  Play around
+        with <code>Get-ExecutionPolicy, Get-Execution Policy -List, and
+        Set-ExecutionPolicy</code> on a new machine to see the effects,
+        or trust me.):
+      </p>
+      <code><kbd>Set-ExecutionPolicy Undefined</kbd></code>
+
+      <p>
+        If you don't trust the previous command to do what you want,
+        this changes the machine-wide execution policy to Restricted
+        explicitly, which is has basically the same effect as the
+        previous command I believe.
+      </p>
+      <code><kbd>Set-ExecutionPolicy Restricted</kbd></code>
+
+      <p>Enable script execution just in this powershell process:</p>
+      <code><kbd>Set-ExecutionPolicy RemoteSigned -Scope Process</kbd></code>
+    </article>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Dean Peterson</p>
+  </footer>
+
+</body>
+</html>

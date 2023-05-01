@@ -33,7 +33,14 @@
           <li><a href="portfolio/prjAccessibility/index.html" target="_blank">Modern</a></li>
         </ul>
       </li>
-      <li><a class="current" href="articles.html">Articles</a></li>
+      <li>
+        <a class="current" href="articles.html">Articles</a>
+        <ul>
+          <li><a href="articles/powershell.html">PowerShell</a></li>
+          <li><a href="articles/eventlog.html">Windows Event Log</a></li>
+          <li><a href="articles/odbc.html">ODBC</a></li>
+        </ul>
+      </li>
       <li><a href="misc.html">Miscellany</a></li>
     </ul>
   </nav>
@@ -41,322 +48,22 @@
   <main>
 
     <article>
-      <h2>PowerShell Tip</h2>
-
-      <h3>Enabling Scripting - Execution Policies</h3>
-      <p>Help on execution policies (note the plural):</p>
-      <code><kbd>help about_execution_policies</kbd></code>
-
-      <p>Show execution policy that is in effect:</p>
-      <code><kbd>Get-ExecutionPolicy</kbd></code>
-
+      <h2>Articles</h2>
       <p>
-        Show execution policy at different scopes.  If it is Undefined
-        in all scopes, Powershell defaults to <code>Restricted</code>
+        Here are a few articles I've written.  They are a bit like
+        technical blog articles, but non-chronological:
       </p>
-      <code><kbd>Get-ExecutionPolicy -List</kbd></code>
-
-      <p>
-        Enable script execution except for unsigned, remote scripts by
-        changing the machine-wide execution policy.  (Remote supposedly
-        means from web, email, and sometimes UNC):
-      </p>
-      <code><kbd>Set-ExecutionPolicy RemoteSigned</kbd></code>
-
-      <p>
-        Change machine-wide execution policy back to the default.  (You
-        can also set execution policy to <code>Restricted</code>
-        explicitly, but restoring it to <code>Undefined</code> is more
-        like a new machine.  On a new machine, all scopes start out
-        <code>Undefined</code>, which makes the effective execution
-        policy <code>Restricted</code> by default anyway.  Play around
-        with <code>Get-ExecutionPolicy, Get-Execution Policy -List, and
-        Set-ExecutionPolicy</code> on a new machine to see the effects,
-        or trust me.):
-      </p>
-      <code><kbd>Set-ExecutionPolicy Undefined</kbd></code>
-
-      <p>
-        If you don't trust the previous command to do what you want,
-        this changes the machine-wide execution policy to Restricted
-        explicitly, which is has basically the same effect as the
-        previous command I believe.
-      </p>
-      <code><kbd>Set-ExecutionPolicy Restricted</kbd></code>
-
-      <p>Enable script execution just in this powershell process:</p>
-      <code><kbd>Set-ExecutionPolicy RemoteSigned -Scope Process</kbd></code>
-    </article>
-
-    <article>
-      <h2>Windows Event Log Tips</h2>
-
-      <h3>Event Viewer GUI</h3>
-      <p>
-        Microsoft updated the Event Viewer GUI starting with Vista/2008.
-        I like the <code>Ctrl+F</code> Find, although the filtering
-        functionality could still use some work.
-      </p>
-
-      <h4>Find An Event with Ctrl+F</h4>
-      <p>
-        To find an event in the Event Viewer GUI, use
-        <code>Ctrl+F</code> or the Find button.  (I'm embarrassed to
-        admit that it took me a long time to realize the Find button and
-        <code>Ctrl+F</code> were there.)  I believe this is only
-        available in Vista/2008 and up.
-      </p>
-      <img src="images/eventLogFindButton.png" width="776" height="311"
-           alt="Screenshot of Windows 2008(R2?) Server Manager showing
-                the Event Log Find button.  Specifically, the left pane
-                of Server Manager is open to tree node Server Manager,
-                Diagnostics, Event Viewer, Windows Logs, System.
-                Events are listed in the middle pane.  Actions
-                are shown in the right pane, and in category System,
-                the Find button is circled.">
-      <p>
-        Note: This even finds text strings that only exist in the
-        combination of the format string and message parameters.
-      </p>
-      <p>
-        Note: The GUI Event Viewer filter's "User" field will not find
-        Logon events by username.
-      </p>
-
-      <h4>Turning off Filtering - Cautionary Note</h4>
-      <p>
-        If you do Filtering in the Event Viewer GUI, and then turn the
-        Filtering back off, just be a little careful.  
-      </p>
-      <img src="images/eventLogClearFilter.png" width="776" height="293"
-           alt="Screenshot of Windows 2008(R2?) Server Manager showing
-                the System Event Log, with the Clear Log and Clear Filter 
-                actions circled in the right pane, showing how close
-                they are to each other.">
-      <p>
-        Notice how close together those two options on the right side
-        are.  "Clear Filter" to see the entire log again, versus "Clear
-        Log..." to lose the entire log forever...slight difference
-        there.  (I live in fear of someday choosing the wrong one...I
-        may be a sad, sad person.)
-      </p>
-
-      <h3>Powershell Event Log Cmdlets</h3>
-      <p>
-        Powershell has two cmdlets for retrieving Windows event logs,
-        <code>Get-EventLog</code> and <code>Get-WinEvent</code>.  The
-        latter is new with Windows Vista/2008.
-      </p>
-
-      <h4>Get-EventLog</h4>
-      <p>Pros:</p>
       <ul>
         <li>
-          It is the only cmdlet available on Windows XP/2003?  (And on
-          newer versions of Windows, it is the only cmdlet that can read
-          ''remote'' event logs from Windows XP/2003 computers?)
+          <a href="articles/powershell.html">PowerShell Tip on Execution Policies</a>
         </li>
         <li>
-          It provides a convenient <code>-Message</code> parameter for
-          easily searching message contents.  It is the only cmdlet that
-          efficiently lets you combine this message text search with a
-          parameter (<code>-Newest</code>) which can efficiently limit the
-          results to the most recent few events?
+          <a href="articles/eventlog.html">Windows Event Log Tips</a>
+        </li>
+        <li>
+          <a href="articles/odbc.html">Tips/Rant on Dealing with 32-bit versus 64-bit ODBC on Windows</a>
         </li>
       </ul>
-      <p>Cons:</p>
-      <ul>
-        <li>
-          It cannot return events from all Windows Vista/2008 and newer
-          event logs.  It can only return events from the "Classic"
-          event logs (which I believe are the event logs like
-          Application, Security, Setup, and System, not the new ones
-          under Applications and Services Logs.)
-        </li>
-      </ul>
-
-      <h4>Get-WinEvent</h4>
-      <p>
-        The pros and cons of <code>Get-WinEvent</code> are the converse
-        of those for <code>Get-EventLog</code>.
-      </p>
-
-      <h4>Filtering Event Logs By Message Description in Powershell</h4>
-      <p>
-        Powershell's two Windows event log cmdlets differ in their
-        filtering behavior, but both have useful options.  Make use of
-        <code>Get-WinEvent's -MaxEvents</code> parameter and
-        <code>Get-EventLog's -Newest</code> parameter when testing
-        filters.  They always seem to filter quickly, and reduce output
-        when testing.
-      </p>
-      <p>
-        Tip: The following <strong>might</strong> find recent logons for
-        a user named Lethargo, although you might need UAC elevation to
-        access the Security event log:
-      </p>
-
-      <code><kbd>Get-WinEvent -FilterHashTable
-                 @{ LogName="Security"; ID=4624; Data="Lethargo" }
-                 -MaxEvents 10</kbd></code>
-
-      <h3>Miscellaneous Event Log Tips</h3>
-      <ul>
-        <li>
-          When reading through Logon event messages, don't stop at the
-          "Subject" user...keep reading further down the message.
-        </li>
-        <li>
-          With <code>Get-WinEvent -FilterHashTable</code>, you can use
-          <code>Data="service name"</code>, but I haven't found a way to
-          search on a whole message description (formatted or
-          unformatted?).
-        </li>
-        <li>
-          The wevtutil command can also list event log messages.<br>
-          <code><kbd> wevtutil gp "Service Control Manager" /ge /gm</kbd></code>
-        </li>
-      </ul>
-
-      <h4>Windows Event Log XPATH Filtering Tip</h4>
-      <p>
-        This query seemed to give only Svc Ctrl Mgr info events (&amp;
-        verbose?), including starting, stopping, and changing from
-        demand to auto start (7040)...
-      </p>
-      <pre><code>
-&lt;QueryList&gt;
-  &lt;Query Id="0" Path="System"&gt;
-    &lt;Select Path="System"&gt;
-        *[System[Provider[@Name='Service Control Manager']
-                 and (Level=4 or Level=0 or Level=5)
-                ]
-          and
-          EventData[Data[@Name='param1']='Windows Time']
-         ]
-    &lt;/Select&gt;
-  &lt;/Query&gt;
-&lt;/QueryList&gt;
-      </code></pre>
-
-      <p>
-        This query should be its inverse, and it appears to be in
-        initial testing.  Compared to the previous query, note the
-        additional Select * line, and the replacement of Select from the
-        previous query with Suppress.  It seems to give System event
-        log, minus informational (&amp; verbose?) Service Control
-        Manager messages about the Windows Time service.
-      </p>
-      <pre><code>
-&lt;QueryList&gt;
-  &lt;Query Id="0" Path="System"&gt;
-    <strong>&lt;Select Path="System"&gt;*&lt;/Select&gt;</strong>
-    &lt;<strong>Suppress</strong> Path="System"&gt;
-        *[System[Provider[@Name='Service Control Manager']
-                 and (Level=4 or Level=0 or Level=5) ]
-          and
-          EventData[Data[@Name='param1']='Windows Time']
-         ]
-    &lt;/Suppress&gt;
-  &lt;/Query&gt;
-&lt;/QueryList&gt;
-      </code></pre>
-    </article>
-
-    <article>
-      <h2>Insanity, or<br>
-          What I Learned from Configuring ODBC on Windows 7 64-bit</h2>
-      <p>
-        Prose may not be the best way to explain the technical aspects
-        of configuring ODBC drivers on 64-bit Windows 7.  However, it
-        probably <em>is</em> the best way to emphasize the pathos.
-      </p>
-      <h3>32-bit Windows</h3>
-      <p>
-        Most of Windows consists of Dynamic Link Libraries, or DLLs.  These
-        are files containing executable computer code that do not run by
-        themselves, but instead load into memory space of one or more
-        executable programs, or EXEs.  When Microsoft Windows went from
-        16-bit to 32-bit, they decided to put the 32-bit DLLs and executables
-        in the appropriately-named C:\Windows\System32\ directory.
-        The 32-bit ODBC control panel was one such executable,
-        and it was appropriately named odbcad32.exe.
-        There  was also a system called Windows On Windows, or WOW, which let
-        old 16-bit applications run on 32-bit Windows.  (I am not sure what
-        directory WOW's supporting files lived in, but it doesn't matter
-        to this discussion.)
-      </p>
-      <h3>64-bit Windows</h3>
-      <p>
-        Fast forward a decade or two, and Windows goes from 32-bit to 64-bit.
-        Evidently enough people hard-coded the directory name
-        C:\Windows\System32\ into their programs and scripts that Microsoft
-        decided they could not change the name.  Therefore, instead of
-        C:\Windows\System64\, the Windows 64-bit DLLs and executables
-        go in C:\Windows\System32\.
-        The 64-bit ODBC control panel is one such executable.  However,
-        again people were too used to the name odbcad32.exe,
-        so the 64-bit ODBC control panel became
-        C:\Windows\System32\odbcad32.exe.
-        Just like WOW let 16-bit applications run on 32-bit Windows,
-        Microsoft created Windows on Windows 64, or WOW64, to let
-        32-bit applications run on 64-bit Windows.
-        And here we have our first incongruity.  In 64-bit Windows,
-        while 64-bit Windows DLLs and executables go in C:\Windows\System32\,
-        the 32-bit Windows DLLs and executables go in C:\Windows\SysWOW64\.
-        To make the transition seamless for 32-bit applications,
-        when a 32-bit application asks 64-bit Windows for something from
-        C:\Windows\System32\, WOW64 behind the scenes redirects that to
-        C:\Windows\SysWOW64\ behind the scenes, so that 32-bit programs
-        get the 32-bit DLLs they need.
-      </p>
-      <h3>ODBC Control Panel</h3>
-      <p>
-        Because ODBC drivers are just DLLs that load into the memory
-        space of the executable that loads them, a 64-bit application
-        needs to use a 64-bit ODBC driver, but a 32-bit application still
-        needs to use a 32-bit ODBC driver.  Windows 64-bit still has
-        a 32-bit ODBC Control Panel to manage those, which is
-        C:\Windows\SysWOW64\odbcad32.exe.
-        Notice that it is the number of bits the application runs as
-        that determines which ODBC drivers and ODBC Control Panel you
-        use to manage them.  If you have a 32-bit version of Microsoft
-        Excel running on a 64-bit version of Windows, and you want
-        to access a database, you need a 32-bit ODBC driver that
-        matches the application, not a 64-bit ODBC driver that matches
-        the operating system.
-      </p>
-      <p>
-        After installing your 32-bit ODBC driver, however, you cannot
-        run Window 64-bit's default 64-bit ODBC Control Panel.  If you do,
-        it won't see your 32-bit ODBC driver.  You open a web browser
-        and search online, and find out that you have to open the
-        32-bit ODBC Control Panel, at C:\Windows\SysWOW64\odbcad32.exe.
-        However, there is a final injury added to the insult.  On Windows 7,
-        if you leave the 64-bit ODBC Control Panel up in the background
-        behind your web browser, and you try to run the
-        32-bit ODBC Control Panel, then instead of running
-        the 32-bit ODBC Control Panel, Windows just brings the already-running
-        copy of the 64-bit ODBC Control Panel to the top, still without
-        your 32-bit ODBC driver showing...Oh, and the window title bars?
-        They are exactly the same, with nothing to indicate that you
-        got the wrong ODBC Control Panel (aside from what drivers, etc.
-        are listed.)
-      </p>
-      <h3>Conclusion</h3>
-      <p>
-        So, if you have a 32-bit application running 64-bit Windows 7,
-        and you need to access something via ODBC, the steps you
-        need to take are:
-      </p>
-      <ol>
-        <li>Install the 32-bit ODBC driver</li>
-        <li>Look through your open windows, and close any running copy of
-            the ODBC Control Panel</li>
-        <li>Run the 32-bit ODBC Control Panel from
-            C:\Windows\SysWOW64\odbcad32.exe</li>
-      </ol>
-      <p>You should then see your 32-bit ODBC driver in the Drivers tab.</p>
     </article>
 
   </main>
