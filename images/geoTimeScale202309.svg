@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+           "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="320" height="2500"
+     viewBox="0 0 600 5000" >
+
+  <!-- With help from great SVG tutorial at
+       http://tutorials.jenkov.com/svg/index.html -->
+
+  <!-- Geological timescale in SVG based on v 2023/09 of the
+       International Commission on Stratigraphy timescale at
+       https://stratigraphy.org/chart -->
+
+  <!-- Allows setting an overall background color. -->
+  <rect width="100%" height="100%" style="fill: white;" />
+
+  <g transform="translate(0, 300)" style="stroke: black; fill: none;" >
+    <!-- all -->
+    <rect x="40" y="0" width="560" height="4567" />
+
+    <rect x="0" y="538.8" width="40" height="4028.2" style="fill: #F74370;" />
+    <text x="5" y="2552.9" transform="rotate(270 35, 2552.9)"
+          style="text-anchor: middle; font: italic 40px sans-serif; fill: black;"
+          >Precambrian</text>
+
+    <rect x="40" y="0" width="40" height="538.8" style="fill: #9AD9DD;" />
+    <text x="45" y="269.4" transform="rotate(270 75, 269.4)"
+          style="text-anchor: middle; font: 40px sans-serif; fill: black;"
+          >Phanerozoic</text>
+
+    <rect x="40" y="538.8" width="40" height="1961.2" style="fill: #F73563;" />
+    <text x="45" y="1519.4" transform="rotate(270 75, 1519.4)"
+          style="text-anchor: middle; font: 40px sans-serif; fill: black;"
+          >Proterozoic</text>
+
+    <rect x="40" y="2500" width="40" height="1531" style="fill: #F0047F;" />
+    <text x="45" y="3265.5" transform="rotate(270 75, 3265.5)"
+          style="text-anchor: middle; font: 40px sans-serif; fill: black;"
+          >Archean</text>
+
+    <rect x="40" y="4031" width="40" height="536" style="fill: #AE027E;" />
+    <text x="45" y="4299" transform="rotate(270 75, 4299)"
+          style="text-anchor: middle; font: 40px sans-serif; fill: black;"
+          >Hadean</text>
+  </g>
+</svg>
