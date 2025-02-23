@@ -58,6 +58,10 @@ header p {
     text-align: right;
 }
 
+header p:first-of-type {
+    padding-top: .5rem;
+}
+
 header .section-right:last-child {
     padding-bottom: 1.5rem;
 }
@@ -116,4 +120,21 @@ ul {
     margin-top: 0;
 }
 
+/* Make word wrapping and length of print version more closely match screen,
+   but at price of smaller left and right margin. */
+/*
+@media print {
+    #border {
+        padding: 2em 2em 2em 0;
+    }
+
+    h2, h3 {
+        width: 120px;
+    }
+
+    .section-right, h2 + p {
+        margin-left: 140px;
+    }
+}
+*/
 
