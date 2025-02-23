@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="TODO: Update with website desc">
+  <title>Dean Peterson's Website - Opinions</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="#main">
+      <img src="images/logoCream.svg" alt="skip navigation">
+    </a>
+    <a class="menu" href="javascript:void(0);" onclick="toggleMenu();">
+      <img src="images/menuCream.svg" alt="drop down menu">
+    </a>
+    <h1>Dean Peterson's Website</h1>
+  </header>
+
+  <!-- nav class hide-menu gets toggled by menu icon with JavaScript. -->
+  <nav class="hide-menu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="resume/resume.html" target="_blank">Resume</a></li>
+      <li>
+        <a href="articles.html">Articles</a>
+        <ul>
+          <li><a href="articles/async.html">C# Acync</a></li>
+          <li><a href="articles/odbc.html">ODBC</a></li>
+          <li><a href="articles/powershell.html">PowerShell</a></li>
+          <li><a href="articles/eventlog.html">Windows Event Log</a></li>
+        </ul>
+      </li>
+      <li>
+        <a class="current" href="opinions.html">Opinions</a>
+        <ul>
+          <li><a href="opinions/palestine.html">Palestine and Israel</a></li>
+        </ul>
+      </li>
+      <li><a href="misc.html">Miscellany</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <article>
+      <h2>Opinions</h2>
+      <p>
+        Older white man has opinions.  Shocking, I know:
+      </p>
+      <ul>
+        <li>
+          <a href="opinions/palestine.html">Opinions on Palestine and Israel</a>
+        </li>
+      </ul>
+      <p>
+        Unsurprisingly, I have other opinions as well.  Ask if you are curious.
+      </p>
+    </article>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Dean Peterson</p>
+  </footer>
+
+</body>
+</html>
