@@ -122,19 +122,17 @@ ul {
 
 /* Make word wrapping and length of print version more closely match screen,
    but at price of smaller left and right margin. */
-/*
 @media print {
     #border {
         padding: 2em 2em 2em 0;
     }
 
     h2, h3 {
-        width: 120px;
+        width: 110px;
     }
 
     .section-right, h2 + p {
-        margin-left: 140px;
+        margin-left: 130px;
     }
 }
-*/
 
