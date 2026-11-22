@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Web page for generating complete sparse rulers">
+  <!-- Social media link preview Open Graph properties -->
+  <meta property="og:title" content="Dean's Sparse Ruler Demonstration Page">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://dean-e-peterson.github.io/images/logoDarkWCreamBg.png">
+  <!--<meta property="og:url" content="">-->
+  <meta property="og:description" content="Web page for generating complete sparse rulers, because everyone needs that.">
+
+  <title>Dean Peterson's Website - Ruler</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="../style.css">
+  <script src="../script.js"></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="#main">
+      <img src="../images/logoCream.svg" alt="skip navigation">
+    </a>
+    <a class="menu" href="javascript:void(0);" onclick="toggleMenu();">
+      <img src="../images/menuCream.svg" alt="drop down menu">
+    </a>
+    <h1>Dean Peterson's Website</h1>
+  </header>
+
+  <!-- nav class hide-menu gets toggled by menu icon with JavaScript. -->
+  <nav class="hide-menu">
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../resume/resume.html" target="_blank">Resume</a></li>
+      <li>
+        <a href="../articles.html">Articles</a>
+        <ul>
+          <li><a href="../articles/async.html">C# Acync</a></li>
+          <li><a href="../articles/odbc.html">ODBC</a></li>
+          <li><a href="../articles/powershell.html">PowerShell</a></li>
+          <li><a href="../articles/eventlog.html">Windows Event Log</a></li>
+        </ul>
+      </li>
+      <li><a class="current" href="../ruler/ruler.html">Ruler</a></li>
+      <li>
+        <a href="../opinions.html">Opinions</a>
+        <ul>
+          <li><a href="../opinions/palestine.html">Palestine and Israel</a></li>
+          <li><a href="../opinions/civilservants.html">Civil Servants</a></li>
+          <li><a href="../opinions/responsibility.html">Responsibility vs Guilt</a></li>
+        </ul>
+      </li>
+      <li><a href="../misc.html">Miscellany</a></li>
+    </ul>
+  </nav>
+  <main>
+
+    <h2>Sparse Ruler</h2>
+    <article>
+      <p>Here is a page to generate complete <a href="https://en.wikipedia.org/wiki/Sparse_ruler">sparse rulers</a>.</p>
+      <p>
+        <label for="implementation">Implementation:</label>
+        <select id="implementation">
+          <option value="RulerJsInt">JavaScript</option>
+          <option value="RulerJsBigInt" selected>JavaScript using BigInt</option>
+        </select>
+      </p>
+      <p>
+        <label for="length">Length:</label>
+        <input id="length" value="23">
+      </p>
+      <p>
+        <label for="tickCount">Tick Count:</label>
+        <input id="tickCount" value="8">
+      </p>
+      <p>
+        <button id="generate" onclick="generate()">Generate</button>
+      </p>
+      <div class="panes">
+        <div class="pane" id="status1">&nbsp;</div>
+        <!--
+        <div class="pane" id="status2">Status 2</div>
+        <div class="pane" id="status3">Status 3</div>
+      -->
+      </div>
+      <ul class="ruler" id="combos">
+        <li>&nbsp;</li>
+      </ul>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Dean Peterson</p>
+  </footer>
+
+  <!-- Not using ES6 modules to preserve local file loading ability for now. -->
+  <script src="js/ruler.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/RulerJsInt.js"></script>
+  <script src="js/ComboInt.js"></script>
+  <script src="js/RulerJsBigInt.js"></script>
+  <script src="js/ComboBigInt.js"></script>
+</body>
+</html>

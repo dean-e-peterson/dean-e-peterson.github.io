@@ -203,4 +203,38 @@ ol.airplane {
     padding-top:            1.3rem;     /* Should match main's line-height */
 }
 
+/* Support for ruler.html */
+.pane,
+ul.ruler {
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--fg-lighter);
+    border-radius: 4px;
+    padding: .3rem;
+}
+/*
+input:hover {
+    border-color: var(--fg-lightest);
+}
+input:focus {
+    border-width: 0;
+}
+*/
+ul.ruler > li {
+    font-family: 'Courier New', Courier, monospace;
+    /* font-size: 1.1rem; */
+    font-weight: bold;
+    list-style: none;
+}
+.panes {
+    display: flex;
+    flex-direction: row;
+    gap: .3rem;
+    font-size: 0.8rem;
+    margin-top: 1rem;
+}
+.pane {
+    flex: 1;
+}
 
