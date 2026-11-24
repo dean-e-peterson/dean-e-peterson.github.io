@@ -7,6 +7,7 @@
     --accent:               #c05746; /* Cedar Chest */
     --bg:                   #f4f9e9; /* Isabelline */
     --bg-darker:            #eef5db; /* Beige */
+    --bg-error:             #ffccbb; /* some light orange */
     --fg:                   #2b4162; /* Deep Koamaru */
     --fg-lighter:           #385f71; /* Deep Space Sparkle */
     --fg-lightest:          #75b9be; /* Moonstone Blue */
@@ -231,10 +232,12 @@ ul.ruler > li {
     display: flex;
     flex-direction: row;
     gap: .3rem;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     margin-top: 1rem;
 }
 .pane {
     flex: 1;
 }
-
+.pane.error {
+    background-color: var(--bg-error);
+}

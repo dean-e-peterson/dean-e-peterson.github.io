@@ -2,6 +2,8 @@
 
 function generate()
 {
+    updateStatus("");
+
     const rulerImplementation = getImplementation();
     const combos = rulerImplementation.generateCompleteCombos();
     const ulCombos = document.getElementById("combos");
@@ -11,28 +13,48 @@ function generate()
     const comboCount = insertCombos(ulCombos, length, combos);
     const elapsedTimeMs = Date.now() - startTimeMs;
 
-    const divStatus1 = document.getElementById("status1");
-    divStatus1.innerText = `Returned ${comboCount} rulers in ${elapsedTimeMs / 1000} seconds.`;
+    updateStatus(`Returned ${comboCount} rulers of length ${rulerImplementation.length} with ${rulerImplementation.tickCount} tick marks in ${elapsedTimeMs / 1000} seconds.`);
+}
+
+function updateStatus(status, isError = false)
+{
+    const divStatus = document.getElementById("status");
+    divStatus.innerText = status;
+    if (isError)
+    {
+        divStatus.classList.add("error");
+    }
+    else
+    {
+        divStatus.classList.remove("error");
+    }
+}
+
+function validationError(implementation, length, tickCount)
+{
+    if (implementation == "RulerJsInt" && length > 29)
+        return "Length may be at most 29 for JavaScript non-BitInt implemenation.";
+    else if (tickCount > (length + 1))
+        return "Tick count may be at most Length + 1."
+    else
+        return "";
 }
 
 function getImplementation()
 {
     const length = parseInt(document.getElementById("length").value);
     const tickCount = parseInt(document.getElementById("tickCount").value);
-    if (tickCount > (length + 1))
+    const implementation = document.getElementById("implementation").value;
+    const error = validationError(implementation, length, tickCount);
+    if (error)
     {
-        alert("Tick count may be only 1 more than Length at most.");
-        throw "Tick count too high";
+        updateStatus(error, true);
+        //alert(error);
+        throw(error);
     }
-    const selectedImplementation = document.getElementById("implementation").value;
-    switch (selectedImplementation)
+    switch (implementation)
     {
         case "RulerJsInt":
-            if (length > 29)
-            {
-                alert("Length may be at most 29 for JavaScript non-BitInt implemenation.");
-                throw "Length too high";
-            }
             return new RulerJsInt(length, tickCount);
         case "RulerJsBigInt":
             return new RulerJsBigInt(length, tickCount);
